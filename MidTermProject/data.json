@@ -4,17 +4,20 @@
         {
             "serviceName":"Building Design",
             "information":"We work with architects and owners to provide gravity and lateral systems to support the design intent.",
-            "past_services":"Our past services include new construction documents and designs"
+            "past_services":"Our past services include new construction documents and designs",
+            "image":[]
         },
         {
             "serviceName":"Construction Engineering",
             "information":"We work with contractors to provide construction phase solutions, such as temporary shoring and verification of construction loading conditions.",
-            "past_services":"Our past services include structural reviews and construction design processes "
+            "past_services":"Our past services include structural reviews and construction design processes ",
+            "image":[]
         },
         {
             "serviceName":"Steel Connection Design",
             "information":"We work with steel fabricators to design connections and other steel members that have been delegated by the engineer of record.",
-            "past_services":"This is examples of past services"
+            "past_services":"This is examples of past services",
+            "image":[]
         }
     ],
     "Residential":[
@@ -22,7 +25,7 @@
             "serviceName": "Residential Consultation",
             "information": "We work with homeowners and their contractors to provide engineering solutions for home additions and modifications.",
             "past_services":"Our past services include remodels, safety inspections, and fire inspections",
-            "image":"./residentialRemodel.jpeg"
+            "image":{"residentialRemodel.jpeg":"Residential Remodel in Ankeny, Iowa"}
         }
     
     ]
