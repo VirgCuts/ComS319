@@ -4,22 +4,17 @@
         {
             "serviceName":"Building Design",
             "information":"We work with architects and owners to provide gravity and lateral systems to support the design intent.",
-            "past_services":"Our past services include construction documents for new buildings and structural reviews"
+            "past_services":"Our past services include new construction documents and designs"
         },
         {
             "serviceName":"Construction Engineering",
             "information":"We work with contractors to provide construction phase solutions, such as temporary shoring and verification of construction loading conditions.",
-            "past_services":"This is examples of past services"
+            "past_services":"Our past services include structural reviews and construction design processes "
         },
         {
             "serviceName":"Steel Connection Design",
             "information":"We work with steel fabricators to design connections and other steel members that have been delegated by the engineer of record.",
             "past_services":"This is examples of past services"
-        },
-        {
-            "serviceName":"Structural Reviews",
-            "information": "tbd",
-            "past_services":"tbd"
         }
     ],
     "Residential":[
