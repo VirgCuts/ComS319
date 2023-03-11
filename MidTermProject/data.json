@@ -21,7 +21,8 @@
         {
             "serviceName": "Residential Consultation",
             "information": "We work with homeowners and their contractors to provide engineering solutions for home additions and modifications.",
-            "past_services":"Our past services include remodels, safety inspections, and fire inspections"
+            "past_services":"Our past services include remodels, safety inspections, and fire inspections",
+            "image":"./residentialRemodel.jpeg"
         }
     
     ]
