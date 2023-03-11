@@ -22,7 +22,7 @@ function appendData(data) {
     for (let element of data[serviceName]) {
         console.log(element);
         let div2 = document.createElement("div");
-        div2.innerHTML = `<h2>${element["serviceName"]}</h2> <br> ${element["information"]} <br> ${element["images"]}`;
+        div2.innerHTML = `<h2>${element["serviceName"]}</h2> <br> ${element["information"]} <br> <img src = "./images/${element["image"]}" width="200px" height ="200px"> </img>`;
         mainContainer.appendChild(div2);
     }
     
