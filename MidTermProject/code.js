@@ -22,10 +22,10 @@ function appendData(data) {
     for (let element of data[serviceName]) {
         console.log(element);
         let div2 = document.createElement("div");
-        div2.innerHTML = `<h2>${element["serviceName"]}</h2> <br> ${element["information"]} <br> `; //Can add style to h2
+        div2.innerHTML = `<h2>${element["serviceName"]}</h2> <br> ${element["information"]} <br> <br>`; //Can add style to h2
         mainContainer.appendChild(div2);
         for(let image of element["image"]){
-            div2.innerHTML += ` <img src = "./images/${image}" width="200px" height ="200px"> </img> <h3>${image[description]}</h3>` ; //Can add style to h3
+            div2.innerHTML += ` <img src = "./images/${image}" width="200px" height ="200px"> </img>` ; //Can add style to h3
         }
     }
     
