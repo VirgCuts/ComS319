@@ -49,17 +49,20 @@ function appendData(data) {
 
                 let item = document.createElement("li");
                 let h2 = document.createAttribute("h2");
-
+                let sec = document.createAttribute("sec");
                 item.innerHTML = `<h2>${element2["serviceName"]}</h2> <p style="font-family:'Verdana'; text-align:left; font-size:18px;" > ${element2["information"]}</p><p style="font-family:'Verdana'; text-align:left; font-size:18px;"> Past services: ${element2["past_services"]} </p>`; //Can add style to h2
                 
                 
-                for(let imageElement of element2["image"]){
+                for(let im of element2["image"]){
+                    console.log(im);
+                    for(let imageElement in im){
+                        console.log(imageElement);
                     let image = document.createElement("img")
                     image.setAttribute("src",`./images/${imageElement}`);
-                    image.style.width = "50%";
-                    image.style.height = "50%";
-                    image.style.marginLeft = "auto";
+                    image.setAttribute("class","img-with-text")
                     item.appendChild(image);
+                    item.innerHTML+= `<figcaption class = "img-with-text" style="font-family:'Verdana'; font-size:18px; text-align:center;"> ${im[imageElement]}</figcaption>`;
+                    }
                 }
                 list.appendChild(item);
                 h1.appendChild(list);

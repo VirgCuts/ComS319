@@ -1,3 +1,10 @@
 #serviceNameId{
     font-size: large;
 }
+
+.img-with-text{
+    width: 32%;
+    height: 32%;
+    display:block;
+
+}
