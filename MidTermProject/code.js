@@ -4,8 +4,9 @@ fetch('./data.json')
             .then(function (response) {
                 return response.json();
             })
-            .then(function (data) {
+            .then(function (data) {  
                 appendData(data);
+                
             })
             .catch(function (err) {
                 console.log('error:' + err);
@@ -13,7 +14,6 @@ fetch('./data.json')
 //This is a function that will appened data like a list
 function appendData(data) {
     let mainContainer = document.getElementById("myData");
-
     for (let serviceName of data["Services"]) { //Each element in the json file
         console.log(serviceName);
         let div = document.createElement("div");
@@ -34,10 +34,3 @@ function appendData(data) {
     } // end of for
     
 } // end of function appendData
-function homeData(data){
-    let mainContainer = document.getElementById("homeData");
-    for(let homeLink in data["HomePage"]){
-        let main = document.createElement("main");
-        main.innerHTML= '<div class="p-5 mb-4 bg-light rounded-3"> <div class="container-fluid py-5"> <p class="col-md-8 fs-4"><img src="./images/${homeLink[image]}"</img> ${homeLink[Name]}</p><button class="btn btn-primary btn-lg" type="button">Learn More</button> </div></div>';
-    }
-}
