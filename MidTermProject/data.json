@@ -16,8 +16,8 @@
         {
             "serviceName":"Steel Connection Design",
             "information":"We work with steel fabricators to design connections and other steel members that have been delegated by the engineer of record.",
-            "past_services":"This is examples of past services",
-            "image":[]
+            "past_services":"Examples of past services include steel connection design",
+            "image":["bearingWallRemovalKairos1.jpg"]
         }
     ],
     "Residential":[
@@ -25,7 +25,7 @@
             "serviceName": "Residential Consultation",
             "information": "We work with homeowners and their contractors to provide engineering solutions for home additions and modifications.",
             "past_services":"Our past services include remodels, safety inspections, and fire inspections",
-            "image":["residentialRemodel.jpeg"]
+            "image":["residentialRemodel.jpeg", "fireDamageInspection1.jpg","fireDamageInspection2.jpg"]
         }
     
     ]
