@@ -1,7 +1,19 @@
 #buttonBox{
-    display:block;
-    float: left;
-    margin:auto;
+    position: relative;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%);
+    display:inherit;
+    float:inherit;
     border: 2px solid black;
     padding: 2px;
+}
+#productBox{
+    position: relative;
+    display: block;
+    float: left;
+    width: 200px;
+}
+span#productBox{
+    border:2px solid black;
 }
