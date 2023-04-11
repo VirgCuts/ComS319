@@ -5,13 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
     <script src="/script.js"></script>
-    <h1>Increment/Decrement Buttons</h1>
-    <p>Count: <span id="count">0</span></p>
-    <button id="increment">+</button>
-    <button id="decrement">-</button>
-
+    
+    <!--This is an increment button, copy and paste for each product-->
+    <span id = "buttonBox">
+        <a id="clicks">0</a>
+        <button type="button" onClick="onClickInc()">+</button>
+        <button type="button" onClick="onClickDec()">-</button>
+    </span>
+    
 </body>
 </html>

@@ -1,16 +1,13 @@
-const countElement = document.getElementById("count");
-const incrementButton = document.getElementById("increment");
-const decrementButton = document.getElementById("decrement");
-let count = 0;
+//Code for incrementing and decrementing on button clicks
+var clicks = 0;
 
-incrementButton.addEventListener("click", function() {
-  count++;
-  countElement.innerText = count;
-});
-
-decrementButton.addEventListener("click", function() {
-  if (count > 0) {
-    count--;
-    countElement.innerText = count;
+function onClickInc() {
+  clicks += 1;
+  document.getElementById("clicks").innerHTML = clicks;
+};
+function onClickDec() {
+  if(clicks > 0){
+    clicks -= 1;
+    document.getElementById("clicks").innerHTML = clicks;
   }
-});
+};
