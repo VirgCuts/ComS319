@@ -1,3 +1,6 @@
+import 'Assignment2/images';
+import "bootstrap/dist/css/bootstrap.css";
+
 
 class product{
   constructor(name, price){
