@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import {Products} from "./Products.js";
+import "./index.css";
+import "bootstrap/dist/css/bootstrap.css";
 
 const root = 
 ReactDOM.createRoot(document.getElementById('root'));
@@ -11,20 +13,67 @@ ReactDOM.createRoot(document.getElementById('root'));
 */
 root.render(
 <React.StrictMode>
-<script />
+<ListProducts />
 </React.StrictMode>
 );
 
 
 //Renders Every Products Image
-export function App() {
-  console.log("Step 1 : After reading file :");
-  const [ProductsCategory, setProductsCategory] = useState(Products);
+export function ListProducts() {
+
+  const [counter,setCounter] = useState(0);
+
+const subtractCounter = () => {
+  if(0 < counter) {
+    setCounter(counter-1);
+  }}
+
+ 
+  const [ProductsCategory, setProductsCategory] = useState(Products); 
   return <div>
+
   {ProductsCategory.map((product, index) => (
-  <div key={index} >
+    
+<div key={index} >
   <img alt="Product Image" src={product.image} />
-  </div>
+  <p>{product.description}</p>
+  
+<div>
+  <h1>Counter: {counter}</h1>
+
+  <button onClick={()=>setCounter(counter+1)}>
+  +
+  </button>
+  <button onClick={subtractCounter}>
+  -
+  </button>
+</div>
+</div>
   ))}
   </div>
   }
+
+
+
+ 
+function Counter(){
+const [counter,setCounter] = useState(0);
+
+const subtractCounter = () => {
+  if(0 < counter) {
+    setCounter(counter-1);
+  }
+}
+return(
+<div>
+<h1>Counter: {counter}</h1>
+
+<button onClick={()=>setCounter(counter+1)}>
++
+</button>
+<button onClick={subtractCounter}>
+-
+</button>
+</div>
+)
+}
