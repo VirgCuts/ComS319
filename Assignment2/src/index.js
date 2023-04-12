@@ -104,7 +104,11 @@ export function ListProducts() {
       displayPage.style.display = "block";
     }
   }
-  
+  /*
+  *Renders the productCatalog in full, calls a map of the products and outputs variables of each also includes count for each
+  *item which changes the value of the counts array at the index of the product, giving a total amount of product in the cart 
+  *at the array index.
+  */
 const render_products = (ProductsCategory) => {
   return <div>
   <h2>Products ({ProductsCategory.length})</h2>
@@ -138,7 +142,7 @@ const render_products = (ProductsCategory) => {
   </div>
   </div>
   }
-
+  //after return is basically the html produced that shows the buttons to swap pages and the divs which hold each page
   return (
     <div>
     <div style={{ minWidth: '65%' }}>
