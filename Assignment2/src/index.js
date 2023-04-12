@@ -18,62 +18,66 @@ root.render(
 );
 
 
-//Renders Every Products Image
+//Renders the catalogue of products needs values with a id,image,title,price,rating,description
 export function ListProducts() {
 
-  const [counter,setCounter] = useState(0);
+  const[cart, setCart] = useState([]);
+  const [cartTotal, setCartTotal] = useState(Products); 
+  //array of product amounts.
+  const [counts, setCounts] = useState(Array(Products.length).fill(0));
+  
+  //increments value in counts array which holds a value equal to the amount of the item in the cart
+  const addToCart = (product) => {
+    setCart([...cart, product]);
+    const index = Products.indexOf(product);
+    setCounts(prevCount => {
+      const newCount = [...prevCount];
+      newCount[index]++;
+      return newCount
+    })
+  };
 
-const subtractCounter = () => {
-  if(0 < counter) {
-    setCounter(counter-1);
-  }}
+//decrements value in counts array utilizes math.min to not go below 0 items
+  const removeFromCart = (product) => {
+    let givenSize = [...cart];
+    givenSize = givenSize.filter((cartItem) => cartItem.id !== product.id);
+    setCart(givenSize);
+    const index = Products.indexOf(product);
+    setCounts(prevCount => {
+      const newCount = [...prevCount];
+      newCount[index] = Math.max(newCount[index] - 1, 0);
+      return newCount
+    })
+  };
+  
+  
+  //used in debugging shows items at bottom
+  const cartItems = cart.map((product) => (
+<div key={product.id}>
+<img class=
+"img-fluid" src={product.image} width={30} />
+{product.title}
+${product.price}
+</div>
+));
 
- 
-  const [ProductsCategory, setProductsCategory] = useState(Products); 
   return <div>
 
-  {ProductsCategory.map((product, index) => (
+  {cartTotal.map((product, index) => (
     
-<div key={index} >
+<div key={index} class="grid-container" >
+<div class = "grid-item">
   <img alt="Product Image" src={product.image} />
-  <p>{product.description}</p>
+  <p>{product.title}</p>
+  <p>${product.price}</p>
   
-<div>
-  <h1>Counter: {counter}</h1>
-
-  <button onClick={()=>setCounter(counter+1)}>
-  +
-  </button>
-  <button onClick={subtractCounter}>
-  -
-  </button>
+  <button onClick={()=> addToCart(product)}> + </button>
+  <button onClick={()=> removeFromCart(product)}> - </button>
+  <p>Count: {counts[product.id-1]}</p>
 </div>
 </div>
   ))}
-  </div>
+  <div>{cartItems}</div>
+  </div> 
   }
 
-
-
- 
-function Counter(){
-const [counter,setCounter] = useState(0);
-
-const subtractCounter = () => {
-  if(0 < counter) {
-    setCounter(counter-1);
-  }
-}
-return(
-<div>
-<h1>Counter: {counter}</h1>
-
-<button onClick={()=>setCounter(counter+1)}>
-+
-</button>
-<button onClick={subtractCounter}>
--
-</button>
-</div>
-)
-}

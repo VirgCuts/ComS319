@@ -15,9 +15,25 @@ code {
 }
 
 img {
-  width: 200px;
-  height:200px;
+  width: 120px;
+  height:120px;
   
+}
+.grid-container {
+  display: inline-grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 10px;
+  border: 1px solid black;
+  padding: 10px;
+  
+}
+
+.grid-item {
+  border: 1px solid black;
+  padding: 10px;
+}
+.counter{
+  font-weight:bold;
 }
 .button {
   background-color: lightslategray;
