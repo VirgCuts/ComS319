@@ -73,7 +73,7 @@ export function ListProducts() {
     ));
   
   useEffect(() => {
-    setTotalCost(totalCost + 5);
+    setTotalCost(totalCost);
   }, []);
     
     
@@ -172,7 +172,6 @@ const render_products = (ProductsCategory) => {
     
     return <div>
       <h2>Cart</h2>
-      <h3>{counts}</h3>
       <p>{cartItems}</p>
       <p>Tax: $5</p>
       <p>Total: ${totalCost.toFixed(2)}</p>
