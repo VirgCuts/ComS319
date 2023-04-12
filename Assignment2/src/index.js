@@ -181,8 +181,120 @@ const render_products = (ProductsCategory) => {
   }
   const render_checkout = (fullCart) => {
     return <div>
-      <h2>Checkout</h2>
-      <h3></h3>
+      
+<div class="row">
+  <div class="col-2"></div>
+
+
+  <div class="col-8">
+
+    <h1>Javascript Form Validation</h1>
+
+    <div id="liveAlertPlaceholder"></div>
+
+    <form class="row g-3" id="checkout-form">
+      <div class="col-md-6">
+        <label for="inputName" class="form-label">Full Name</label>
+        <input type="text" class="form-control" id="inputName"></input>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+        <div class="invalid-feedback">
+          Must be like, "John Doe"
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <label for="inputEmail4" class="form-label">Email</label>
+        <input type="email" class="form-control" id="inputEmail4"></input>
+        <div class="valid-feedback">
+          Looks good!
+        </div>
+        <div class="invalid-feedback">
+          Must be like, "abc@xyz.efg"
+        </div>
+      </div>
+
+      <div class="col-12">
+        <label for="inputCard" class="form-label">Card</label>
+        <div class="input-group mb-3">
+          <span class="input-group-text" id="basic-addon1"><i class="bi-credit-card-fill"></i></span>
+          <input type="text" id="inputCard" class="form-control" placeholder="XXXX-XXXX-XXXX-XXXX"aria-label="Username" aria-describedby="basic-addon1"></input>
+          <div class="valid-feedback">
+            Looks good!
+          </div>
+          <div class="invalid-feedback">
+            Must be like, "7777-7777-7777-7777"
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12">
+        <label for="inputAddress" class="form-label">Address</label>
+        <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St"></input>
+      </div>
+      <div class="col-12">
+        <label for="inputAddress2" class="form-label">Address 2</label>
+        <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor"></input>
+      </div>
+      <div class="col-md-6">
+        <label for="inputCity" class="form-label">City</label>
+        <input type="text" class="form-control" id="inputCity"></input>
+      </div>
+      <div class="col-md-4">
+        <label for="inputState" class="form-label">State</label>
+        <select id="inputState" class="form-select">
+          <option selected>Choose...</option>
+        </select>
+      </div>
+      <div class="col-md-2">
+        <label for="inputZip" class="form-label">Zip</label>
+        <input type="text" class="form-control" id="inputZip"></input>
+      </div>
+      <div class="col-12">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="gridCheck"></input>
+          <label class="form-check-label" for="gridCheck">
+            Check me out
+          </label>
+        </div>
+      </div>
+      <div class="col-12">
+        <button type="submit" class="btn btn-success"> <i class="bi-bag-check"></i> Order</button>
+      </div>
+    </form>
+
+
+    <div class="card collapse" style={{width: '18rem'}}>
+      <div class="card-body">
+        <h5 class="card-title">Order summary</h5>
+        <p class="card-text">Here is a summary of your order.</p>
+      </div>
+      <ul class="list-group list-group-flush">
+
+      </ul>
+      <a href="" onclick="location.reload()" class="btn btn-secondary"> <i class="bi-arrow-left-circle"></i>
+        Return</a>
+    </div>
+
+
+    <footer class="bd-footer py-4 py-md-5 mt-5 bg-light">
+      <div class="container py-4 py-md-5 px-4 px-md-3">
+        <div class="row">
+          <div class="col-lg-12 mb-3">
+            <b>SE/Com-S 319</b> Javascript form validation.
+          </div>
+
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <div class="col-2"></div>
+
+
+</div>
     </div>
   }
   /*
@@ -216,3 +328,52 @@ const render_products = (ProductsCategory) => {
 
   }
 
+
+
+  //Add your code under this line
+  
+  // let validate = function(){
+  // val = true;
+  // let email = document.getElementById('inputEmail4')
+  // let name = document.getElementById('inputName')
+  // let card = document.getElementById('inputCard')
+  // if (!email.value.match(
+  // /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+  // )){
+  // email.setAttribute("class", "form-control is-invalid");
+  // val = false;
+  // }
+  // else{
+  // email.setAttribute("class", "form-control is-valid");
+  // order.email = email.value
+  // }
+  // if (name.value.length == 0)
+  // {
+  // name.setAttribute("class","form-control is-invalid")
+  // val = false
+  // }
+  // else{
+  // name.setAttribute("class", "form-control is-valid");
+  // order.name = name.value
+  // }
+  // if (!card.value.match(/^[0-9]{4}\-[0-9]{4}\-[0-9]{4}\-[0-9]{4}$/))
+  // {
+  // card.setAttribute("class","form-control is-invalid")
+  // val = false
+  // }
+  // else{
+  // card.setAttribute("class", "form-control is-valid");
+  // order.card = card.value
+  // }
+  // if (val){
+  // form.classList.add("collapse")
+  // for (const [key, value] of Object.entries(order)) {
+  // summaryList.innerHTML += '<li class="list-group-item"> <b>' + `${key}` +': </b>' + `${value}` +'</li>'
+  // }
+  // summaryCard.classList.remove("collapse")
+  // alertPlaceholder.innerHTML = ""
+  // alert('<i class="bi-cart-check-fill"></i> You have made an order!','success')
+  // }
+  // return val;
+  // }
+  
