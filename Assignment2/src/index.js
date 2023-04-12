@@ -42,7 +42,7 @@ export function ListProducts() {
 
 //decrements value in counts array utilizes math.min to not go below 0 items
   const removeFromCart = (product) => {
-    if(!cart.includes(product)) {
+    if(cart.includes(product) && counts[product.id-1]==1) {
     let givenSize = [...cart];
     givenSize = givenSize.filter((cartItem) => cartItem.id !== product.id);
     setCart(givenSize);
@@ -57,8 +57,7 @@ export function ListProducts() {
   //displays the items that have been added to the cart
   const cartItems = cart.map((el) => (
     <div key={el.id}>
-    <img class=
-    "img-fluid" src={el.image} width={20} />
+    <img class="img-fluid" src={el.image} width={20} />
     {el.title}
     Price: ${el.price}
     Amount: {counts[el.id-1]}
