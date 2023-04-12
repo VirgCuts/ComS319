@@ -43,6 +43,7 @@ export function ListProducts() {
     })
   };
 
+  
 //decrements value in counts array utilizes math.min to not go below 0 items
   const removeFromCart = (product) => {
     if(cart.includes(product) && counts[product.id-1]==1) {
@@ -61,6 +62,8 @@ export function ListProducts() {
       return newCount
     })
   };
+
+
   //displays the items that have been added to the cart
   const cartItems = cart.map((el) => (
     <div key={el.id}>
