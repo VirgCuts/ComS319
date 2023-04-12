@@ -24,6 +24,8 @@ export function ListProducts() {
   const[cart, setCart] = useState([]);
   const [cartTotal, setCartTotal] = useState(Products);
   const [query, setQuery] = useState(''); 
+  const [totalCost, setTotalCost] = useState(0);
+
   //array of product amounts.
   const [counts, setCounts] = useState(Array(Products.length).fill(0));
   
@@ -33,6 +35,7 @@ export function ListProducts() {
     setCart([...cart, product]);
     }
     const index = Products.indexOf(product);
+    setTotalCost(totalCost + product.price)
     setCounts(prevCount => {
       const newCount = [...prevCount];
       newCount[index]++;
@@ -47,7 +50,11 @@ export function ListProducts() {
     givenSize = givenSize.filter((cartItem) => cartItem.id !== product.id);
     setCart(givenSize);
     }
+    
     const index = Products.indexOf(product);
+    if(!counts[index] == 0) {
+      setTotalCost(totalCost - product.price)
+    }
     setCounts(prevCount => {
       const newCount = [...prevCount];
       newCount[index] = Math.max(newCount[index] - 1, 0);
@@ -61,8 +68,15 @@ export function ListProducts() {
     {el.title}
     Price: ${el.price}
     Amount: {counts[el.id-1]}
+    TotalCost: ${(el.price * counts[el.id-1]).toFixed(2)}
     </div>
     ));
+  
+  useEffect(() => {
+    setTotalCost(totalCost + 5);
+  }, []);
+    
+    
 
   //Handles the search currently doesnt fix itself when values are deleted
   const search = (e) => {
@@ -160,6 +174,9 @@ const render_products = (ProductsCategory) => {
       <h2>Cart</h2>
       <h3>{counts}</h3>
       <p>{cartItems}</p>
+      <p>Tax: $5</p>
+      <p>Total: ${totalCost.toFixed(2)}</p>
+      <p>Total+Tax: ${(totalCost+5).toFixed(2)}</p>
     </div>
   }
   const render_checkout = (fullCart) => {
