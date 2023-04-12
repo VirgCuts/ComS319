@@ -142,15 +142,18 @@ const render_products = (ProductsCategory) => {
   </div>
   }
   
-  const render_cart = (ProductsCategory) => {
+  const render_cart = (fullCart) => {
     return <div>
       <h2>Cart</h2>
-      <h3>{}</h3>
+      <h3>{counts}</h3>
 
     </div>
   }
-  const render_checkout = (ProductsCategory) => {
-    
+  const render_checkout = (fullCart) => {
+    return <div>
+      <h2>Checkout</h2>
+      <h3></h3>
+    </div>
   }
   //after return is basically the html produced that shows the buttons to swap pages and the divs which hold each page
   return (
@@ -175,7 +178,7 @@ const render_products = (ProductsCategory) => {
       {render_cart(cart)}
     </div>
     <div id="checkout">
-      <p>Pages Swap now after 3</p>
+      {render_checkout(cart)}
     </div>
     </div>
     );
