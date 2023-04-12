@@ -65,3 +65,33 @@ display:none;
 img{
   object-fit: scale-down;
 }
+
+#cartContainer{
+  display: inline-block;
+  position: relative;
+  border: 2px solid black;
+  padding: 2px;
+  margin: 2px;
+  vertical-align: top;
+  height: 350px;
+  width: 15%;
+  text-align: center; /* center the text horizontally */
+  
+}
+#cartContainertext{
+  position: absolute;
+  bottom: 0;
+  left: 0; /* center the text vertically */
+  right: 0;
+  display: flex; /* use flexbox to center the text horizontally and vertically */
+  justify-content: center;
+  align-items: center;
+}
+.img-fluid{
+  justify-content: center;
+  align-items: center;
+}
+#cartTaxTotal{
+  display: block;
+  border: 1px solid black;
+}

@@ -66,12 +66,11 @@ export function ListProducts() {
 
   //displays the items that have been added to the cart
   const cartItems = cart.map((el) => (
+    <div id="cartContainer">
     <div key={el.id}>
     <img class="img-fluid" src={el.image} width={20} />
-    {el.title}
-    Price: ${el.price}
-    Amount: {counts[el.id-1]}
-    TotalCost: ${(el.price * counts[el.id-1]).toFixed(2)}
+    <p>{el.title}</p> <p id="cartContainertext">Price: ${el.price} <br></br>Amount: {counts[el.id-1]} <br></br>Total Cost: ${(el.price * counts[el.id-1]).toFixed(2)}</p>
+    </div>
     </div>
     ));
   
@@ -176,9 +175,11 @@ const render_products = (ProductsCategory) => {
     return <div>
       <h2>Cart</h2>
       <p>{cartItems}</p>
-      <p>Tax: $5</p>
-      <p>Total: ${totalCost.toFixed(2)}</p>
-      <p>Total+Tax: ${(totalCost+5).toFixed(2)}</p>
+      <div id="cartTaxTotal">
+        <p>Tax: $5</p>
+        <p>Total: ${totalCost.toFixed(2)}</p>
+        <p>Total+Tax: ${(totalCost+5).toFixed(2)}</p>
+      </div>
     </div>
   }
   const render_checkout = (fullCart) => {
