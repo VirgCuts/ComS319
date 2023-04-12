@@ -1,5 +1,4 @@
-
-export const Products = [
+[
     {
       "id": 1,
       "title": "Red Jetski",
@@ -39,7 +38,7 @@ export const Products = [
     {
       "id": 5,
       "title": "Jacob",
-      "price": .02,
+      "price": 0.02,
       "description": "Red pill gigachad. Cat not included",
       "category": "human",
       "image": "https://i.imgur.com/C8Pk6wT.jpeg",

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
-import {Products} from "./Products.js";
+import Products from "./Products.json";
 import "./index.css";
 import "bootstrap/dist/css/bootstrap.css";
 
@@ -193,7 +193,6 @@ const render_products = (ProductsCategory) => {
     <h1>Javascript Form Validation</h1>
 
     <div id="liveAlertPlaceholder"></div>
-
     <form class="row g-3" id="checkout-form">
       <div class="col-md-6">
         <label for="inputName" class="form-label">Full Name</label>
@@ -254,14 +253,6 @@ const render_products = (ProductsCategory) => {
         <input type="text" class="form-control" id="inputZip"></input>
       </div>
       <div class="col-12">
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" id="gridCheck"></input>
-          <label class="form-check-label" for="gridCheck">
-            Check me out
-          </label>
-        </div>
-      </div>
-      <div class="col-12">
         <button type="submit" class="btn btn-success"> <i class="bi-bag-check"></i> Order</button>
       </div>
     </form>
@@ -299,6 +290,33 @@ const render_products = (ProductsCategory) => {
 </div>
     </div>
   }
+
+  const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
+  const form = document.getElementById('checkout-form')
+  const inputCard = document.querySelector('#inputCard')
+  const alertTrigger = document.getElementById('submit-btn')
+  const summaryCard = document.querySelector('.card')
+  const summaryList = document.querySelector('.card > ul')
+
+  var order = { name: '', 
+  email: '', 
+  card: '' }
+
+  const alert = (message, type) => {
+    const wrapper = document.createElement('div')
+    wrapper.innerHTML = [
+    `<div class="alert alert-${type} alert-dismissible" role="alert">`,
+    ` <div>${message}</div>`,
+    ' <button type="button" class="btn-close" data-bs-dismiss="alert" arialabel="Close"></button>',
+    '</div>'
+    ].join('')
+    alertPlaceholder.append(wrapper)
+    }
+
+
+
+
+
   /*
   *Rendered Page sent to HTML
   */
@@ -334,48 +352,5 @@ const render_products = (ProductsCategory) => {
 
   //Add your code under this line
   
-  // let validate = function(){
-  // val = true;
-  // let email = document.getElementById('inputEmail4')
-  // let name = document.getElementById('inputName')
-  // let card = document.getElementById('inputCard')
-  // if (!email.value.match(
-  // /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-  // )){
-  // email.setAttribute("class", "form-control is-invalid");
-  // val = false;
-  // }
-  // else{
-  // email.setAttribute("class", "form-control is-valid");
-  // order.email = email.value
-  // }
-  // if (name.value.length == 0)
-  // {
-  // name.setAttribute("class","form-control is-invalid")
-  // val = false
-  // }
-  // else{
-  // name.setAttribute("class", "form-control is-valid");
-  // order.name = name.value
-  // }
-  // if (!card.value.match(/^[0-9]{4}\-[0-9]{4}\-[0-9]{4}\-[0-9]{4}$/))
-  // {
-  // card.setAttribute("class","form-control is-invalid")
-  // val = false
-  // }
-  // else{
-  // card.setAttribute("class", "form-control is-valid");
-  // order.card = card.value
-  // }
-  // if (val){
-  // form.classList.add("collapse")
-  // for (const [key, value] of Object.entries(order)) {
-  // summaryList.innerHTML += '<li class="list-group-item"> <b>' + `${key}` +': </b>' + `${value}` +'</li>'
-  // }
-  // summaryCard.classList.remove("collapse")
-  // alertPlaceholder.innerHTML = ""
-  // alert('<i class="bi-cart-check-fill"></i> You have made an order!','success')
-  // }
-  // return val;
-  // }
+  
   
