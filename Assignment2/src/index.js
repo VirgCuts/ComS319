@@ -54,7 +54,7 @@ export function ListProducts() {
   const [query, setQuery] = useState('');
   const search = (e) => {
     setQuery(e.target.value);
-    const results = cartTotal.filter(eachProduct => {
+    const results = Products.filter(eachProduct => {
     if (e.target.value === "") return cartTotal;
     return eachProduct.title.toLowerCase().includes(e.target.value.toLowerCase())
     });
@@ -128,7 +128,6 @@ const render_products = (ProductsCategory) => {
   <span aria-hidden="true" className="absolute inset-0" />
   <span style={{ fontSize: '16px', fontWeight: '600' }}>{product.title}</span>
   </a>
-  <p>Tag - {product.category}</p>
   </h3>
   <p>Rating: {product.rating.rate}</p>
   </div>
@@ -141,6 +140,17 @@ const render_products = (ProductsCategory) => {
   ))}
   </div>
   </div>
+  }
+  
+  const render_cart = (ProductsCategory) => {
+    return <div>
+      <h2>Cart</h2>
+      <h3>{}</h3>
+
+    </div>
+  }
+  const render_checkout = (ProductsCategory) => {
+    
   }
   //after return is basically the html produced that shows the buttons to swap pages and the divs which hold each page
   return (
@@ -162,7 +172,7 @@ const render_products = (ProductsCategory) => {
     {render_products(cartTotal)}
     </div>
     <div id="cart">
-      <p>Cha cha changes</p>
+      {render_cart(cart)}
     </div>
     <div id="checkout">
       <p>Pages Swap now after 3</p>
