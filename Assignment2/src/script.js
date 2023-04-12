@@ -1,5 +1,4 @@
-import 'Assignment2/images';
-import "bootstrap/dist/css/bootstrap.css";
+
 
 
 class product{
@@ -14,14 +13,14 @@ var totalCost = 0; //total cost
 var cart = [];    //cart of products
 
 //Increase and decrease for jetski, increasing number, adds to cart, and adds to cost
-function onClickIncJetski() {
+export function onClickIncJetski() {
   jetclicks += 1;
   totalCost += 200;
   document.getElementById("jetclicks").innerHTML = jetclicks; //make sure to define id as jetclicks
   cart.push(new product("jetski",200));
 };
 
-function onClickDecJetski() {
+export function onClickDecJetski() {
   if(jetclicks > 0){
     jetclicks -= 1;
     totalCost-= 200;
@@ -41,13 +40,13 @@ function onClickDecJetski() {
 };
 
 var materclicks = 0;
-function onClickIncMater() {
+export function onClickIncMater() {
   materclicks += 1;
   totalCost += 15;
   document.getElementById("materclicks").innerHTML = materclicks;
   cart.push(new product("mater",15));
 };
-function onClickDecMater() {
+export function onClickDecMater() {
   if(materclicks > 0){
     materclicks -= 1;
     totalCost-= 15;
