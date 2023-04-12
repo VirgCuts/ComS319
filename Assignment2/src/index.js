@@ -22,13 +22,16 @@ root.render(
 export function ListProducts() {
 
   const[cart, setCart] = useState([]);
-  const [cartTotal, setCartTotal] = useState(Products); 
+  const [cartTotal, setCartTotal] = useState(Products);
+  const [query, setQuery] = useState(''); 
   //array of product amounts.
   const [counts, setCounts] = useState(Array(Products.length).fill(0));
   
   //increments value in counts array which holds a value equal to the amount of the item in the cart
   const addToCart = (product) => {
+    if(!cart.includes(product)) {
     setCart([...cart, product]);
+    }
     const index = Products.indexOf(product);
     setCounts(prevCount => {
       const newCount = [...prevCount];
@@ -39,9 +42,11 @@ export function ListProducts() {
 
 //decrements value in counts array utilizes math.min to not go below 0 items
   const removeFromCart = (product) => {
+    if(!cart.includes(product)) {
     let givenSize = [...cart];
     givenSize = givenSize.filter((cartItem) => cartItem.id !== product.id);
     setCart(givenSize);
+    }
     const index = Products.indexOf(product);
     setCounts(prevCount => {
       const newCount = [...prevCount];
@@ -49,9 +54,18 @@ export function ListProducts() {
       return newCount
     })
   };
+  //displays the items that have been added to the cart
+  const cartItems = cart.map((el) => (
+    <div key={el.id}>
+    <img class=
+    "img-fluid" src={el.image} width={20} />
+    {el.title}
+    Price: ${el.price}
+    Amount: {counts[el.id-1]}
+    </div>
+    ));
 
   //Handles the search currently doesnt fix itself when values are deleted
-  const [query, setQuery] = useState('');
   const search = (e) => {
     setQuery(e.target.value);
     const results = Products.filter(eachProduct => {
@@ -61,12 +75,11 @@ export function ListProducts() {
     setCartTotal(results);
     }
 
-  
+
   /*
   *utilizes displayPage to determine pages to swap to if no page swaps have been called yet will initialize by checking if display page === 0
   *if true first sets catalog to display page as starting point is always catalog (needed in order to remove catalog). Then removes the catalog
   *and replaces it with page choice and assigns displayPage with said choice.  
-  *
   */
   let displayPage = 0;
   function pageSwap(pageNum){
@@ -123,10 +136,10 @@ const render_products = (ProductsCategory) => {
   </div>
   <div>
   <div>
-  <h3 className="text-sm text-gray-700">
+  <h3>
   <a href={product.href}>
-  <span aria-hidden="true" className="absolute inset-0" />
-  <span style={{ fontSize: '16px', fontWeight: '600' }}>{product.title}</span>
+  <span aria-hidden="true"/>
+  <span style={{ fontSize: '15px', fontWeight: '600' }}>{product.title}</span>
   </a>
   </h3>
   <p>Rating: {product.rating.rate}</p>
@@ -143,10 +156,11 @@ const render_products = (ProductsCategory) => {
   }
   
   const render_cart = (fullCart) => {
+    
     return <div>
       <h2>Cart</h2>
       <h3>{counts}</h3>
-
+      <p>{cartItems}</p>
     </div>
   }
   const render_checkout = (fullCart) => {
@@ -155,7 +169,9 @@ const render_products = (ProductsCategory) => {
       <h3></h3>
     </div>
   }
-  //after return is basically the html produced that shows the buttons to swap pages and the divs which hold each page
+  /*
+  *Rendered Page sent to HTML
+  */
   return (
     <div>
     <div style={{ minWidth: '65%' }}>
@@ -171,7 +187,6 @@ const render_products = (ProductsCategory) => {
     </div>
     </div>
     <div id="productCatalog">
-    {console.log("Before render :",Products.length,cartTotal.length)}
     {render_products(cartTotal)}
     </div>
     <div id="cart">
