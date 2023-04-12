@@ -27,6 +27,12 @@ img {
   padding: 10px;
   
 }
+#cart {
+display:none;
+}
+#checkout {
+  display:none;
+}
 
 .grid-item {
   border: 1px solid black;
