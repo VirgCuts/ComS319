@@ -1,3 +1,12 @@
+//@Authors Keenan Jacobs, Carter Cutsforth
+/*
+* Notes:
+* Known bug with the catalog checkout sometimes refreshing page
+* believe something to do with addEventListeners used a if(null) 
+* to handle errors it would throw but caused issues
+* Only two real pages as implemented the cart and confirmation view
+* into a single page as it seemed fine together.
+*/
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import Products from "./Products.json";
@@ -16,8 +25,6 @@ root.render(
 <ListProducts />
 </React.StrictMode>
 );
-
-
 //Renders the catalogue of products needs values with a id,image,title,price,rating,description
 export function ListProducts() {
 
@@ -90,6 +97,113 @@ export function ListProducts() {
     setCartTotal(results);
     }
 
+  const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
+  const form = document.getElementById('checkout-form')
+  const inputCard = document.querySelector('#inputCard')
+  const alertTrigger = document.getElementById('submit-btn')
+  const summaryCard = document.querySelector('.card')
+  const summaryList = document.querySelector('.card > ul')
+
+  var order = { name: '', 
+  email: '', 
+  card: '' }
+
+  const alert = (message, type) => {
+    const wrapper = document.createElement('div')
+    wrapper.innerHTML = [
+    `<div class="alert alert-${type} alert-dismissible" role="alert">`,
+    ` <div>${message}</div>`,
+    ' <button type="button" class="btn-close" data-bs-dismiss="alert" arialabel="Close"></button>',
+    '</div>'
+    ].join('')
+    alertPlaceholder.append(wrapper)
+    }
+
+    function isNumeric (n) {
+      return !isNaN(parseFloat(n)) && isFinite(n)
+      }
+
+      if(inputCard != null) {
+      inputCard.addEventListener('input', event => {
+      if (!inputCard.value) {
+      return event.preventDefault() // stops modal from being shown
+      } else {
+      inputCard.value = inputCard.value.replace(/-/g, '')
+      let newVal = ''
+      for (var i = 0, nums = 0; i < inputCard.value.length; i++) {
+      if (nums != 0 && nums % 4 == 0) {
+      newVal += '-'
+      }
+      newVal += inputCard.value[i]
+      if (isNumeric(inputCard.value[i])) {
+      nums++
+      }
+      }
+      inputCard.value = newVal
+      }})
+      }
+      if(form != null) {
+      form.addEventListener('submit', event => {
+        //if (!form.checkValidity()) {
+        if (!validate()) {
+        alertPlaceholder.innerHTML = ''
+        alert('<i class="bi-exclamation-circle"></i> Something went wrong!','danger')
+        }
+        event.preventDefault()
+        event.stopPropagation()
+        //form.classList.add('was-validated')
+        }, false )
+      }
+
+      
+        let validate = function(){
+         let val = true;
+          let email = document.getElementById('inputEmail4')
+          let name = document.getElementById('inputName')
+          let card = document.getElementById('inputCard')
+
+if (!email.value.match(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+)){
+email.setAttribute("class", "form-control is-invalid");
+val = false;
+}
+else{
+email.setAttribute("class", "form-control is-valid");
+order.email = email.value
+}
+if (name.value.length == 0)
+{
+name.setAttribute("class","form-control is-invalid")
+val = false
+}
+else{
+name.setAttribute("class", "form-control is-valid");
+order.name = name.value
+}
+if (!card.value.match(/^[0-9]{4}\-[0-9]{4}\-[0-9]{4}\-[0-9]{4}$/))
+{
+card.setAttribute("class","form-control is-invalid")
+val = false
+}
+else{
+card.setAttribute("class", "form-control is-valid");
+order.card = card.value
+}
+if (val){
+form.classList.add("collapse")
+for (const [key, value] of Object.entries(order)) {
+summaryList.innerHTML += 
+'<li class="list-group-item"> <b>' + `${key}` +
+': </b>' + `${value}` +'</li>'
+}
+
+summaryCard.classList.remove("collapse")
+alertPlaceholder.innerHTML = ""
+alert('<i class="bi-cart-check-fill"></i> You have made an order!',
+'success')
+}
+return val;
+}
 
   /*
   *utilizes displayPage to determine pages to swap to if no page swaps have been called yet will initialize by checking if display page === 0
@@ -132,6 +246,7 @@ export function ListProducts() {
       displayPage.style.display = "block";
     }
   }
+
   /*
   *Renders the productCatalog in full, calls a map of the products and outputs variables of each also includes count for each
   *item which changes the value of the counts array at the index of the product, giving a total amount of product in the cart 
@@ -139,6 +254,8 @@ export function ListProducts() {
   */
 const render_products = (ProductsCategory) => {
   return <div>
+  <input type="search" value={query} onChange={search} placeholder="Search"/>
+  <button onClick={()=> pageSwap(2)}> Cart </button>
   <h2>Products ({ProductsCategory.length})</h2>
   <div style={{ maxHeight: '800px', overflowY:
   'scroll' }}>
@@ -173,6 +290,9 @@ const render_products = (ProductsCategory) => {
   const render_cart = (fullCart) => {
     
     return <div>
+      <div id = "returnButton">
+      <button onClick={()=> pageSwap(1)}> Return to Catalog </button>
+      </div>
       <h2>Cart</h2>
       <p>{cartItems}</p>
       <div id="cartTaxTotal">
@@ -180,19 +300,11 @@ const render_products = (ProductsCategory) => {
         <p>Total: ${totalCost.toFixed(2)}</p>
         <p>Total+Tax: ${(totalCost+5).toFixed(2)}</p>
       </div>
-    </div>
-  }
-  const render_checkout = (fullCart) => {
-    return <div>
-      
-<div class="row">
+      <div class="row">
   <div class="col-2"></div>
 
-
   <div class="col-8">
-
-    <h1>Javascript Form Validation</h1>
-
+    <h1>Checkout Form</h1>
     <div id="liveAlertPlaceholder"></div>
     <form class="row g-3" id="checkout-form">
       <div class="col-md-6">
@@ -254,7 +366,8 @@ const render_products = (ProductsCategory) => {
         <input type="text" class="form-control" id="inputZip"></input>
       </div>
       <div class="col-12">
-        <button type="submit" class="btn btn-success"> <i class="bi-bag-check"></i> Order</button>
+      <button type="submit" class="btn btn-success"> <i class="bi-bag-check"></i>Checkout </button>
+    
       </div>
     </form>
 
@@ -264,11 +377,16 @@ const render_products = (ProductsCategory) => {
         <h5 class="card-title">Order summary</h5>
         <p class="card-text">Here is a summary of your order.</p>
       </div>
+      {"COMMENT: To fix an issue with this list carrying on past the 3 images I simply used css to hide past the first 3 values"}
       <ul class="list-group list-group-flush">
 
       </ul>
-      <a href="" onclick="location.reload()" class="btn btn-secondary"> <i class="bi-arrow-left-circle"></i>
-        Return</a>
+      <a href="" onclick={()=> {
+        pageSwap(1);
+        window.location.reload();
+      }}
+      class="btn btn-secondary"> <i class="bi-arrow-left-circle"></i>
+            Return</a>
     </div>
 
 
@@ -291,33 +409,7 @@ const render_products = (ProductsCategory) => {
 </div>
     </div>
   }
-
-  const alertPlaceholder = document.getElementById('liveAlertPlaceholder')
-  const form = document.getElementById('checkout-form')
-  const inputCard = document.querySelector('#inputCard')
-  const alertTrigger = document.getElementById('submit-btn')
-  const summaryCard = document.querySelector('.card')
-  const summaryList = document.querySelector('.card > ul')
-
-  var order = { name: '', 
-  email: '', 
-  card: '' }
-
-  const alert = (message, type) => {
-    const wrapper = document.createElement('div')
-    wrapper.innerHTML = [
-    `<div class="alert alert-${type} alert-dismissible" role="alert">`,
-    ` <div>${message}</div>`,
-    ' <button type="button" class="btn-close" data-bs-dismiss="alert" arialabel="Close"></button>',
-    '</div>'
-    ].join('')
-    alertPlaceholder.append(wrapper)
-    }
-
-
-
-
-
+  
   /*
   *Rendered Page sent to HTML
   */
@@ -325,11 +417,7 @@ const render_products = (ProductsCategory) => {
     <div>
     <div style={{ minWidth: '65%' }}>
     <div>
-    <h1> Product Catalog App </h1>
-    <input type="search" value={query} onChange={search}/>
-  <button onClick={()=> pageSwap(1)}> Catalogue </button>
-  <button onClick={()=> pageSwap(2)}> Cart </button>
-  <button onClick={()=> pageSwap(3)}> Checkout </button>
+    <h1> Assignment 2: The Gamer Store</h1>
     <p>
     <b style={{ color: 'teal' }}>Carter Cutsforth and Keenan Jacobs</b>
     </p>
@@ -340,9 +428,6 @@ const render_products = (ProductsCategory) => {
     </div>
     <div id="cart">
       {render_cart(cart)}
-    </div>
-    <div id="checkout">
-      {render_checkout(cart)}
     </div>
     </div>
     );
