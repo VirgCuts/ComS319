@@ -377,7 +377,7 @@ const render_products = (ProductsCategory) => {
         <h5 class="card-title">Order summary</h5>
         <p class="card-text">Here is a summary of your order.</p>
       </div>
-      {"COMMENT: To fix an issue with this list carrying on past the 3 images I simply used css to hide past the first 3 values"}
+      {/*COMMENT: To fix an issue with this list carrying on past the 3 images I simply used css to hide past the first 3 values*/}
       <ul class="list-group list-group-flush">
 
       </ul>
@@ -388,18 +388,6 @@ const render_products = (ProductsCategory) => {
       class="btn btn-secondary"> <i class="bi-arrow-left-circle"></i>
             Return</a>
     </div>
-
-
-    <footer class="bd-footer py-4 py-md-5 mt-5 bg-light">
-      <div class="container py-4 py-md-5 px-4 px-md-3">
-        <div class="row">
-          <div class="col-lg-12 mb-3">
-            <b>SE/Com-S 319</b> Javascript form validation.
-          </div>
-
-        </div>
-      </div>
-    </footer>
 
   </div>
 
@@ -416,12 +404,9 @@ const render_products = (ProductsCategory) => {
   return (
     <div>
     <div style={{ minWidth: '65%' }}>
-    <div>
-    <h1> Assignment 2: The Gamer Store</h1>
-    <p>
-    <b style={{ color: 'teal' }}>Carter Cutsforth and Keenan Jacobs</b>
-    </p>
-    </div>
+    <header>
+    <h1>The Gamer Store</h1>
+    </header>
     </div>
     <div id="productCatalog">
     {render_products(cartTotal)}
@@ -429,7 +414,19 @@ const render_products = (ProductsCategory) => {
     <div id="cart">
       {render_cart(cart)}
     </div>
+    <footer class="bd-footer py-4 py-md-5 mt-5 bg-dark">
+      <div class="container py-4 py-md-5 px-4 px-md-3">
+        <div class="row">
+          <div class="col-lg-12 mb-3" style={{ color:'teal'}}>
+           <b>Assignment 2</b> -
+            <b>Com-S 319</b> - Carter Cutsforth and Keenan Jacobs
+          </div>
+
+        </div>
+      </div>
+    </footer>
     </div>
+    
     );
 
   }
