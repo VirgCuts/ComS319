@@ -1,12 +1,15 @@
 import { useState, useEffect } from "react";
+
 function App() {
   const [product, setProduct] = useState([]);
   const [viewer1, setViewer1] = useState(false);
   const [oneProduct, setOneProduct] = useState([]);
   const [viewer2, setViewer2] = useState(false);
+  const [viewer3, setViewer3] = useState(false);
   const [viewer4, setViewer4] = useState(false);
   const [checked4, setChecked4] = useState(false);
   const [index, setIndex] = useState(0);
+  
   
   function getOneProduct(id) {
     console.log(id);
@@ -35,6 +38,7 @@ function App() {
       Rate :{el.rating.rate} and Count:{el.rating.count} <br />
       </div>
       ));
+      
       
   
   function getAllProducts() {
@@ -68,7 +72,13 @@ function App() {
     image: "http://127.0.0.1:4000/images/",
     rating: { rate: 0.0, count: 0 },
   });
-  
+
+  const prodId = document.getElementById("updateIDinput").value;
+
+  function updatePricing(productID, newPrice) {
+    
+
+  }
   function handleChange(evt) {
     const value = evt.target.value;
     if (evt.target.name === "_id") {
@@ -170,6 +180,29 @@ function App() {
       <h1>Show one Product by Id:</h1>
       {viewer2 && <div>Product: {showOneItem}</div>}
       <hr></hr>
+
+      <h3>Update a product:</h3>
+      
+      <form action="">
+      <input type="text" 
+      id="message" 
+      name="message" 
+      placeholder="id" 
+      onChange={(e) =>getOneProduct(e.target.value)} />
+
+      {viewer2 && <div>Product: {showOneItem}</div>}
+      <hr></hr>
+
+      <input type="text" 
+      id="updateIDinput" 
+      name="message" 
+      placeholder="Update Price" 
+      onChange={(e) =>updatePricing(prodId, e.target.value)} />
+      <button type="submit" onClick={handleOnSubmit}>
+          submit
+        </button>
+      </form>
+
 
       <h3>Add a new product :</h3>
       <form action="">

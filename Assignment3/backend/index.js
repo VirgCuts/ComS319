@@ -28,6 +28,7 @@ app.get("/", async (req, resp) => {
   console.log(SallProducts);
   resp.send(allProducts);
 });
+
 app.get("/:id", async (req, resp) => {
   const id = req.params.id;
   const query = { _id: id };
@@ -78,3 +79,14 @@ app.delete("/delete", async (req, res) => {
     console.log("Error while deleting :" + p_id + " " + err);
   }
 });
+
+app.put("/", async (req, resp) => {
+  const data = await dbConnect();
+  let result = data.updateOne( 
+    {name: req.body._id},
+    {$set: req.body }
+
+  )
+}
+    
+  );
