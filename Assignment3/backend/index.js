@@ -82,10 +82,17 @@ app.delete("/delete", async (req, res) => {
 
 app.put("/put", async (req, resp) => {
   const data = await dbConnect();
+  try {
+  const messageResponse = { message: `Product ${p_id} price updated correctly` };
   let result = data.updateOne( 
     {_id: req.body._id},
     {$set: req.body }
   )
+  }
+  catch(err) {
+    console.log("Error while updating :" + p_id + " " + err);
+  }
+
 }
     
   );
