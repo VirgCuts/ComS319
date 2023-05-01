@@ -163,9 +163,9 @@ function App() {
   }
 
   return (
-    <div id="div">
+    <div>
       <h1>Catalog of Products</h1>
-      <span id="gridButton4">
+
       <button onClick={() => getAllProducts()}>Shows All users</button>
 
       <input
@@ -177,19 +177,24 @@ function App() {
       />
 
       <button onClick={() => getAllProducts()}>Show All products</button>
-      </span>
       <hr class="b-example-divider"></hr>
+      <div>
       <h1>Show all available Products.</h1>
-      
       
       {viewer1 && <div>Products {showAllItems}</div>}
       <hr class="b-example-divider"></hr>
+
+      </div>
+
+      <div>
       <h1>Show one Product by Id:</h1>
       {viewer2 && <div>Product: {showOneItem}</div>}
+      </div>
+
       <hr class="b-example-divider"></hr>
 
-      <h3>Update a product:</h3>
 
+      <h3>Update a product:</h3>
       <form action="" id="gridButton2">
       <input type="text" 
       id="updateIDinput" 
@@ -198,7 +203,6 @@ function App() {
       onChange={(e) =>getOneProduct(e.target.value)} />
 
         {viewer2 && <div>Product: {showOneItem}</div>}
-        
 
       <input type="text" 
       id="message" 
@@ -211,61 +215,63 @@ function App() {
       </form>
       <hr class="b-example-divider"></hr>
       <span id="newProduct">
+
+    
       <h3>Add a new product :</h3>
       
       <form action="" id="gridButtons">
-        ID<input
+        <input
           type="number"
-          placeholder="ID"
+          placeholder="id?"
           name="_id"
           value={addNewProduct._id}
           onChange={handleChange}
         />
-        Title<input
+        <input
           type="text"
-          placeholder="Title"
+          placeholder="title?"
           name="title"
           value={addNewProduct.title}
           onChange={handleChange}
         />
-        Price<input
+        <input
           type="number"
-          placeholder="Price"
+          placeholder="price?"
           name="price"
           value={addNewProduct.price}
           onChange={handleChange}
         />
-        Description<input
+        <input
           type="text"
-          placeholder="Description"
+          placeholder="description?"
           name="description"
           value={addNewProduct.description}
           onChange={handleChange}
         />
-        Category<input
+        <input
           type="text"
-          placeholder="Category"
+          placeholder="category?"
           name="category"
           value={addNewProduct.category}
           onChange={handleChange}
         />
-        Image<input
+        <input
           type="text"
-          placeholder="Image"
+          placeholder="image?"
           name="image"
           value={addNewProduct.image}
           onChange={handleChange}
         />
-        Rate<input
+        <input
           type="number"
-          placeholder="Rate"
+          placeholder="rate?"
           name="rate"
           value={addNewProduct.rating.rate}
           onChange={handleChange}
         />
-        Count<input
+        <input
           type="number"
-          placeholder="Count"
+          placeholder="count?"
           name="count"
           value={addNewProduct.rating.count}
           onChange={handleChange}
@@ -278,7 +284,6 @@ function App() {
         </span>
         <hr class="b-example-divider"></hr>
       <h3>Delete one product:</h3>
-      <span id="gridButton3">
       <input
         type="checkbox"
         id="acceptdelete"
@@ -286,13 +291,11 @@ function App() {
         checked={checked4}
         onChange={(e) => setChecked4(!checked4)}
       />
-      
       <button onClick={() => getOneByOneProductPrev()}>Prev</button>
       <button onClick={() => getOneByOneProductNext()}>Next</button>
       <button onClick={() => deleteOneProduct(product[index]._id)}>
         Delete
       </button>
-      </span>
       {checked4 && (
         <div key={product[index]._id}>
           <img src={product[index].image} width={30} /> <br />
