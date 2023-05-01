@@ -9,38 +9,35 @@ function App() {
   const [viewer4, setViewer4] = useState(false);
   const [checked4, setChecked4] = useState(false);
   const [index, setIndex] = useState(0);
-  
-  
+
   function getOneProduct(id) {
     console.log(id);
     if (id >= 1 && id <= 20) {
-    fetch("http://localhost:4000/" + id)
-    .then((response) => response.json())
-    .then((data) => {
-    console.log("Show one product :", id);
-    console.log(data);
-    const dataArr = [];
-    dataArr.push(data);
-    setOneProduct(dataArr);
-    });
-    setViewer2(!viewer2);
+      fetch("http://localhost:4000/" + id)
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("Show one product :", id);
+          console.log(data);
+          const dataArr = [];
+          dataArr.push(data);
+          setOneProduct(dataArr);
+        });
+      setViewer2(!viewer2);
     } else {
-    console.log("Wrong number of Product id.");
+      console.log("Wrong number of Product id.");
     }
-    }
-  
-    const showOneItem = oneProduct.map((el) => (
-      <div key={el._id}>
+  }
+
+  const showOneItem = oneProduct.map((el) => (
+    <div key={el._id}>
       <img src={el.image} width={30} /> <br />
       Title: {el.title} <br />
       Category: {el.category} <br />
       Price: {el.price} <br />
       Rate :{el.rating.rate} and Count:{el.rating.count} <br />
-      </div>
-      ));
-      
-      
-  
+    </div>
+  ));
+
   function getAllProducts() {
     fetch("http://localhost:4000/")
       .then((response) => response.json())
@@ -51,7 +48,7 @@ function App() {
       });
     setViewer1(!viewer1);
   }
-  
+
   const showAllItems = product.map((el) => (
     <div key={el._id}>
       <img src={el.image} width={30} /> <br />
@@ -61,7 +58,7 @@ function App() {
       Rate :{el.rating.rate} and Count:{el.rating.count} <br />
     </div>
   ));
-  
+
   // new Product
   const [addNewProduct, setAddNewProduct] = useState({
     _id: 0,
@@ -73,6 +70,9 @@ function App() {
     rating: { rate: 0.0, count: 0 },
   });
 
+
+
+  function updatePricing(productID, newPrice) {}
   function handleChange(evt) {
     const value = evt.target.value;
     if (evt.target.name === "_id") {
@@ -98,7 +98,7 @@ function App() {
       });
     }
   }
-  
+
   function handleOnSubmit(e) {
     e.preventDefault();
     console.log(e.target.value);
@@ -118,7 +118,7 @@ function App() {
         }
       });
   }
-  
+
   function getOneByOneProductNext() {
     if (product.length > 0) {
       if (index === product.length - 1) setIndex(0);
@@ -127,7 +127,7 @@ function App() {
       else setViewer4(false);
     }
   }
-  
+
   function getOneByOneProductPrev() {
     if (product.length > 0) {
       if (index === 0) setIndex(product.length - 1);
@@ -136,7 +136,7 @@ function App() {
       else setViewer4(false);
     }
   }
-  
+
   function deleteOneProduct(deleteid) {
     console.log("Product to delete :", deleteid);
     fetch("http://localhost:4000/delete/", {
@@ -168,8 +168,14 @@ function App() {
 
       <button onClick={() => getAllProducts()}>Shows All users</button>
 
-      <input type="text" id="message" name="message" placeholder="id" onChange={(e) =>getOneProduct(e.target.value)} />
-      
+      <input
+        type="text"
+        id="message"
+        name="message"
+        placeholder="id"
+        onChange={(e) => getOneProduct(e.target.value)}
+      />
+
       <button onClick={() => getAllProducts()}>Show All products</button>
       <h1>Show all available Products.</h1>
       <hr></hr>
@@ -181,26 +187,30 @@ function App() {
       <hr></hr>
 
       <h3>Update a product:</h3>
-      
-      <form action="">
-      <input type="text" 
-      id="message" 
-      name="message" 
-      placeholder="id" 
-      onChange={(e) =>getOneProduct(e.target.value)} />
 
-      {viewer2 && <div>Product: {showOneItem}</div>}
-      <hr></hr>
+      <form action="">
+        <input
+          type="text"
+          id="message"
+          name="message"
+          placeholder="id"
+          onChange={(e) => getOneProduct(e.target.value)}
+        />
+
+        {viewer2 && <div>Product: {showOneItem}</div>}
+        <hr></hr>
 
       <input type="text" 
       id="updateIDinput" 
       name="message" 
       placeholder="Update Price" 
-      onChange={(e) =>updatePricing(1, e.target.value)} />
+      onChange={(e) =>updatePricing(prodId, e.target.value)} />
       <button type="submit" onClick={handleOnSubmit}>
           submit
         </button>
       </form>
+
+
       <h3>Add a new product :</h3>
       <form action="">
         <input
