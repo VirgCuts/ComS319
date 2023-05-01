@@ -178,19 +178,19 @@ function App() {
       />
 
       <button onClick={() => getAllProducts()}>Show All products</button>
- 
+      <hr class="b-example-divider"></hr>
       <h1>Show all available Products.</h1>
-      <hr></hr>
+      
       
       {viewer1 && <div>Products {showAllItems}</div>}
-      <hr></hr>
+      <hr class="b-example-divider"></hr>
       <h1>Show one Product by Id:</h1>
       {viewer2 && <div>Product: {showOneItem}</div>}
-      <hr></hr>
+      <hr class="b-example-divider"></hr>
 
       <h3>Update a product:</h3>
 
-      <form action="">
+      <form action="" id="gridButton2">
       <input type="text" 
       id="updateIDinput" 
       name="message" 
@@ -198,7 +198,7 @@ function App() {
       onChange={(e) =>getOneProduct(e.target.value)} />
 
         {viewer2 && <div>Product: {showOneItem}</div>}
-        <hr></hr>
+        
 
       <input type="text" 
       id="message" 
@@ -209,7 +209,7 @@ function App() {
           submit
         </button>
       </form>
-
+      <hr class="b-example-divider"></hr>
       <span id="newProduct">
       <h3>Add a new product :</h3>
       
@@ -276,6 +276,7 @@ function App() {
           submit
         </button>
         </span>
+        <hr class="b-example-divider"></hr>
       <h3>Delete one product:</h3>
       <input
         type="checkbox"
