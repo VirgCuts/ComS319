@@ -18,11 +18,11 @@ code {
   grid-template-rows: 25px 25px; /* Your number of rows */
   grid-auto-flow: column;
   grid-gap: 10px;
-  padding: 10px;
+  padding-bottom: 10px;
 }
 #gridButton2 {
   display: grid;
-  grid-template-columns: auto;
+  grid-template-columns: 25% 25% 25% 25%;
   grid-template-rows: auto; /* Your number of rows */
   grid-auto-flow: column;
   grid-gap: 10px;
@@ -36,7 +36,13 @@ code {
   grid-gap: 10px;
   padding-right: 50%;
 }
-
+#box{
+  border-style: solid;
+  border-width: 2px;
+  border-color:black;
+  display: block;
+  padding:10px;
+}
 #gridButton4 {
   display: grid;
   grid-template-columns: auto;

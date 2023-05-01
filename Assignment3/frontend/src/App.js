@@ -95,8 +95,7 @@ function App() {
       });
     }
   }
-  
-  
+
   function handleOnSubmit(e) {
     e.preventDefault();
     console.log(e.target.value);
@@ -157,142 +156,161 @@ function App() {
 
   function updatePricing(newPrice) {
     var productId = document.getElementById("updateIDinput").value;
-    fetch("http://localhost:4000/put/", {
-        
-    })
+    fetch("http://localhost:4000/put/", {});
   }
 
   return (
     <div id="div">
+      <div id="box">
       <h1>Catalog of Products</h1>
       <span id="gridButton4">
-      <button onClick={() => getAllProducts()}>Shows All users</button>
+        <button onClick={() => getAllProducts()}>Shows All users</button>
 
-      <input
-        type="text"
-        id="message"
-        name="message"
-        placeholder="id"
-        onChange={(e) => getOneProduct(e.target.value)}
-      />
+        <input
+          type="text"
+          id="message"
+          name="message"
+          placeholder="id"
+          onChange={(e) => getOneProduct(e.target.value)}
+        />
 
-      <button onClick={() => getAllProducts()}>Show All products</button>
+        <button onClick={() => getAllProducts()}>Show All products</button>
       </span>
+      </div>
       <hr class="b-example-divider"></hr>
+      <div id="box">
       <h1>Show all available Products.</h1>
-      
-      
+
       {viewer1 && <div>Products {showAllItems}</div>}
+      </div>
       <hr class="b-example-divider"></hr>
+      <div id="box">
       <h1>Show one Product by Id:</h1>
       {viewer2 && <div>Product: {showOneItem}</div>}
+      </div>
       <hr class="b-example-divider"></hr>
 
-      <h3>Update a product:</h3>
+      <div id="box">
+        <h3>Update a product:</h3>
 
-      <form action="" id="gridButton2">
-      <input type="text" 
-      id="updateIDinput" 
-      name="message" 
-      placeholder="id" 
-      onChange={(e) =>getOneProduct(e.target.value)} />
+        <form action="" id="gridButton2">
+          <input
+            type="text"
+            id="updateIDinput"
+            name="message"
+            placeholder="id"
+            onChange={(e) => getOneProduct(e.target.value)}
+          />
 
-        {viewer2 && <div>Product: {showOneItem}</div>}
-        
+          {viewer2 && <div>Product: {showOneItem}</div>}
 
-      <input type="text" 
-      id="message" 
-      name="message" 
-      placeholder="Update Price" 
-      onChange={(e) =>updatePricing(e.target.value)} />
-      <button type="submit" onClick={handleOnSubmit}>
-          submit
-        </button>
-      </form>
+          <input
+            type="text"
+            id="message"
+            name="message"
+            placeholder="Update Price"
+            onChange={(e) => updatePricing(e.target.value)}
+          />
+          <button type="submit" onClick={handleOnSubmit}>
+            submit
+          </button>
+        </form>
+      </div>
       <hr class="b-example-divider"></hr>
+      <div id="box">
       <span id="newProduct">
-      <h3>Add a new product :</h3>
-      
-      <form action="" id="gridButtons">
-        ID<input
-          type="number"
-          placeholder="ID"
-          name="_id"
-          value={addNewProduct._id}
-          onChange={handleChange}
-        />
-        Title<input
-          type="text"
-          placeholder="Title"
-          name="title"
-          value={addNewProduct.title}
-          onChange={handleChange}
-        />
-        Price<input
-          type="number"
-          placeholder="Price"
-          name="price"
-          value={addNewProduct.price}
-          onChange={handleChange}
-        />
-        Description<input
-          type="text"
-          placeholder="Description"
-          name="description"
-          value={addNewProduct.description}
-          onChange={handleChange}
-        />
-        Category<input
-          type="text"
-          placeholder="Category"
-          name="category"
-          value={addNewProduct.category}
-          onChange={handleChange}
-        />
-        Image<input
-          type="text"
-          placeholder="Image"
-          name="image"
-          value={addNewProduct.image}
-          onChange={handleChange}
-        />
-        Rate<input
-          type="number"
-          placeholder="Rate"
-          name="rate"
-          value={addNewProduct.rating.rate}
-          onChange={handleChange}
-        />
-        Count<input
-          type="number"
-          placeholder="Count"
-          name="count"
-          value={addNewProduct.rating.count}
-          onChange={handleChange}
-        />
-        
-      </form>
-      <button type="submit" onClick={handleOnSubmit}>
+        <h3>Add a new product :</h3>
+
+        <form action="" id="gridButtons">
+          ID
+          <input
+            type="number"
+            placeholder="ID"
+            name="_id"
+            value={addNewProduct._id}
+            onChange={handleChange}
+          />
+          Title
+          <input
+            type="text"
+            placeholder="Title"
+            name="title"
+            value={addNewProduct.title}
+            onChange={handleChange}
+          />
+          Price
+          <input
+            type="number"
+            placeholder="Price"
+            name="price"
+            value={addNewProduct.price}
+            onChange={handleChange}
+          />
+          Description
+          <input
+            type="text"
+            placeholder="Description"
+            name="description"
+            value={addNewProduct.description}
+            onChange={handleChange}
+          />
+          Category
+          <input
+            type="text"
+            placeholder="Category"
+            name="category"
+            value={addNewProduct.category}
+            onChange={handleChange}
+          />
+          Image
+          <input
+            type="text"
+            placeholder="Image"
+            name="image"
+            value={addNewProduct.image}
+            onChange={handleChange}
+          />
+          Rate
+          <input
+            type="number"
+            placeholder="Rate"
+            name="rate"
+            value={addNewProduct.rating.rate}
+            onChange={handleChange}
+          />
+          Count
+          <input
+            type="number"
+            placeholder="Count"
+            name="count"
+            value={addNewProduct.rating.count}
+            onChange={handleChange}
+          />
+        </form>
+        <button type="submit" onClick={handleOnSubmit}>
           submit
         </button>
-        </span>
-        <hr class="b-example-divider"></hr>
+      </span>
+      </div>
+      <hr class="b-example-divider"></hr>
+      <div id="box">
       <h3>Delete one product:</h3>
       <span id="gridButton3">
-      <input
-        type="checkbox"
-        id="acceptdelete"
-        name="acceptdelete"
-        checked={checked4}
-        onChange={(e) => setChecked4(!checked4)}
-      />
-      
-      <button onClick={() => getOneByOneProductPrev()}>Prev</button>
-      <button onClick={() => getOneByOneProductNext()}>Next</button>
-      <button onClick={() => deleteOneProduct(product[index]._id)}>
-        Delete
-      </button>
+        <input
+          type="checkbox"
+          id="acceptdelete"
+          name="acceptdelete"
+          checked={checked4}
+          onChange={(e) => setChecked4(!checked4)}
+        />
+
+        <button onClick={() => getOneByOneProductPrev()}>Prev</button>
+        <button onClick={() => getOneByOneProductNext()}>Next</button>
+        <button onClick={() => deleteOneProduct(product[index]._id)}>
+          Delete
+        </button>
       </span>
+      </div>
       {checked4 && (
         <div key={product[index]._id}>
           <img src={product[index].image} width={30} /> <br />
