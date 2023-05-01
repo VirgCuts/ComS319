@@ -73,12 +73,6 @@ function App() {
     rating: { rate: 0.0, count: 0 },
   });
 
-
-
-  function updatePricing(productID, newPrice) {
-    
-
-  }
   function handleChange(evt) {
     const value = evt.target.value;
     if (evt.target.name === "_id") {
@@ -161,6 +155,11 @@ function App() {
         }
       });
     setChecked4(!checked4);
+  }
+
+  function updatePricing(productID, newPrice) {
+    
+
   }
 
   return (
