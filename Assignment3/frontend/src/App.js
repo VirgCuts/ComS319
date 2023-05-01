@@ -73,7 +73,7 @@ function App() {
     rating: { rate: 0.0, count: 0 },
   });
 
-  const prodId = document.getElementById("updateIDinput").value;
+
 
   function updatePricing(productID, newPrice) {
     
@@ -165,7 +165,7 @@ function App() {
 
   return (
     <div>
-      <h1>Catalog ofS Products</h1>
+      <h1>Catalog of Products</h1>
 
       <button onClick={() => getAllProducts()}>Shows All users</button>
 
@@ -197,13 +197,11 @@ function App() {
       id="updateIDinput" 
       name="message" 
       placeholder="Update Price" 
-      onChange={(e) =>updatePricing(prodId, e.target.value)} />
+      onChange={(e) =>updatePricing(1, e.target.value)} />
       <button type="submit" onClick={handleOnSubmit}>
           submit
         </button>
       </form>
-
-
       <h3>Add a new product :</h3>
       <form action="">
         <input
