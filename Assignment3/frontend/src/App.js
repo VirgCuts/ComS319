@@ -157,9 +157,10 @@ function App() {
     setChecked4(!checked4);
   }
 
-  function updatePricing(productID, newPrice) {
-    
+  function updatePricing(newPrice) {
+    var productId = document.getElementById("updateIDinput").value;
 
+    
   }
 
   return (
@@ -184,7 +185,7 @@ function App() {
       
       <form action="">
       <input type="text" 
-      id="message" 
+      id="updateIDinput" 
       name="message" 
       placeholder="id" 
       onChange={(e) =>getOneProduct(e.target.value)} />
@@ -193,10 +194,10 @@ function App() {
       <hr></hr>
 
       <input type="text" 
-      id="updateIDinput" 
+      id="message" 
       name="message" 
       placeholder="Update Price" 
-      onChange={(e) =>updatePricing(1, e.target.value)} />
+      onChange={(e) =>updatePricing(e.target.value)} />
       <button type="submit" onClick={handleOnSubmit}>
           submit
         </button>
