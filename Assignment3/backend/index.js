@@ -25,7 +25,7 @@ app.listen(port, () => {
 app.get("/", async (req, resp) => {
   const query = {};
   const allProducts = await Product.find(query);
-  console.log(SallProducts);
+  console.log(allProducts);
   resp.send(allProducts);
 });
 
@@ -80,12 +80,11 @@ app.delete("/delete", async (req, res) => {
   }
 });
 
-app.put("/", async (req, resp) => {
+app.put("/put", async (req, resp) => {
   const data = await dbConnect();
   let result = data.updateOne( 
-    {name: req.body._id},
+    {_id: req.body._id},
     {$set: req.body }
-
   )
 }
     

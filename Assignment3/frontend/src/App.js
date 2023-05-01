@@ -70,9 +70,6 @@ function App() {
     rating: { rate: 0.0, count: 0 },
   });
 
-
-
-  function updatePricing(productID, newPrice) {}
   function handleChange(evt) {
     const value = evt.target.value;
     if (evt.target.name === "_id") {
@@ -98,7 +95,8 @@ function App() {
       });
     }
   }
-
+  
+  
   function handleOnSubmit(e) {
     e.preventDefault();
     console.log(e.target.value);
@@ -159,8 +157,9 @@ function App() {
 
   function updatePricing(newPrice) {
     var productId = document.getElementById("updateIDinput").value;
-
-    
+    fetch("http://localhost:4000/put/", {
+        
+    })
   }
 
   return (
