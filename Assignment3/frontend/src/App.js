@@ -156,40 +156,78 @@ function App() {
 
   function updatePricing(newPrice) {
     var productId = document.getElementById("updateIDinput").value;
-    fetch("http://localhost:4000/put/", {});
+    fetch("http://localhost:4000/put/", {
+      method: "PUT",
+      
+    });
+  }
+
+  function hideView(item) {
+    var element = document.getElementById(item);
+    var showAll = document.getElementById("ShowAllAvail");
+    var showOne = document.getElementById("ShowOneProd");
+    var upProd = document.getElementById("updateProduct");
+    var addProd = document.getElementById("addProduct");
+    var delProd = document.getElementById("deleteProduct");
+    if(element.style.display == "none") {
+      //lazy way around only showing one element this looks ugly
+
+      showAll.style.display = "none";
+      showOne.style.display = "none";
+      upProd.style.display = "none";
+      addProd.style.display = "none";
+      delProd.style.display = "none";
+      element.style.display = "block";
+    }
+    else {
+      element.style.display = "none";
+    }
+    
   }
 
   return (
     <div id="div">
       <div id="box">
+
+      <div id="CatofProd">
       <h1>Catalog of Products</h1>
       <span id="gridButton4">
-        <button onClick={() => getAllProducts()}>Shows All users</button>
 
-        <input
+      <button onClick={() => hideView("ShowAllAvail")}>Show All Available Products</button>
+      <button onClick={() => hideView("ShowOneProd")}>Show Product by Id</button>
+      <button onClick={() => hideView("updateProduct")}>Update Product Price</button>
+      <button onClick={() => hideView("addProduct")}>Add a Product</button>
+      <button onClick={() => hideView("deleteProduct")}>Delete a Product</button>
+      </span>
+      </div>
+      </div>
+
+      <hr class="b-example-divider"></hr>
+      <div id= "ShowAllAvail">
+      <div id="box" name="ShowAllAvail">
+      <h1>Show all available Products.</h1><button onClick={() => getAllProducts()}>Show All products</button>
+
+      {viewer1 && <div>Products {showAllItems}</div>}
+      </div>
+      </div>
+      
+      
+      <div id="ShowOneProd">
+      <div id="box">
+      <h1>Show one Product by Id:</h1>
+      <input
           type="text"
           id="message"
           name="message"
           placeholder="id"
           onChange={(e) => getOneProduct(e.target.value)}
         />
-
-        <button onClick={() => getAllProducts()}>Show All products</button>
-      </span>
-      </div>
-      <hr class="b-example-divider"></hr>
-      <div id="box">
-      <h1>Show all available Products.</h1>
-
-      {viewer1 && <div>Products {showAllItems}</div>}
-      </div>
-      <hr class="b-example-divider"></hr>
-      <div id="box">
-      <h1>Show one Product by Id:</h1>
       {viewer2 && <div>Product: {showOneItem}</div>}
       </div>
-      <hr class="b-example-divider"></hr>
+      </div>
+  
 
+      <div id= "updateProduct">
       <div id="box">
         <h3>Update a product:</h3>
 
@@ -216,7 +254,8 @@ function App() {
           </button>
         </form>
       </div>
-      <hr class="b-example-divider"></hr>
+      </div>
+      <div id="addProduct">
       <div id="box">
       <span id="newProduct">
         <h3>Add a new product :</h3>
@@ -292,7 +331,11 @@ function App() {
         </button>
       </span>
       </div>
-      <hr class="b-example-divider"></hr>
+      </div>
+
+
+
+      <div id="deleteProduct">
       <div id="box">
       <h3>Delete one product:</h3>
       <span id="gridButton3">
@@ -322,6 +365,7 @@ function App() {
           {product[index].rating.count} <br />
         </div>
       )}
+    </div>
     </div>
   );
 } // App end

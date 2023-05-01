@@ -132,3 +132,19 @@ code {
   padding: 10px;
   align-items: baseline;
 }
+
+#ShowAllAvail {
+  display: block;
+}
+#ShowOneProd {
+  display: none;
+}
+#updateProduct {
+  display: none;
+}
+#addProduct {
+  display: none;
+}
+#deleteProduct {
+  display: none;
+}
