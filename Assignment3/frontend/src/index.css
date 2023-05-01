@@ -12,3 +12,13 @@ code {
     monospace;
 }
 
+#gridButtons{
+  display: grid;
+  grid-template-columns: auto ;
+  grid-template-rows: 25px 25px; /* Your number of rows */
+  grid-auto-flow: column;
+  grid-gap: 10px;
+}
+#newProduct{
+  padding:5px;
+}
