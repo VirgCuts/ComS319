@@ -166,7 +166,7 @@ function App() {
   return (
     <div>
       <h1>Catalog of Products</h1>
-
+      <div id = "catalogProducts">
       <button onClick={() => getAllProducts()}>Shows All users</button>
 
       <input
@@ -180,7 +180,7 @@ function App() {
       <button onClick={() => getAllProducts()}>Show All products</button>
       <h1>Show all available Products.</h1>
       <hr></hr>
-
+      </div>
       {viewer1 && <div>Products {showAllItems}</div>}
       <hr></hr>
       <h1>Show one Product by Id:</h1>
