@@ -1,5 +1,5 @@
-import logo from "./logo.svg";
-import "./App.css";
+import "./Tabs.css";
+import "bootstrap/dist/css/bootstrap.css";
 
 export function AboutUs() {
   return (
