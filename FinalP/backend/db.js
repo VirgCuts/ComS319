@@ -1,8 +1,8 @@
 const mysql = require('mysql')
 const db = mysql.createConnection({
 host: "127.0.0.1",
-user: "root",
-password: "Vikings0213!",
-database:"reactmysql"
+user: "sqluser",
+password: "password",
+database:"database_name"
 })
 module.exports = db;

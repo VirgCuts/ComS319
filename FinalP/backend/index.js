@@ -1,65 +1,64 @@
 const express = require("express");
-const mysql = require("mysql");
+const db = require("./db.js");
 const cors = require("cors");
-
 const app = express();
-
+const PORT = 4000;
 app.use(cors());
 app.use(express.json());
-
-// create a connection to the MySQL database
-const db = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "Vikings0213!",
-  database: "database_name"
+app.use(express.static("public"));
+app.use("/images", express.static("images"));
+app.listen(PORT, () => {
+  console.log(`Server is running on ${PORT}`);
 });
-
-// connect to the MySQL database
-db.connect((err) => {
-  if (err) {
-    throw err;
-  }
-  console.log("Connected to the MySQL database!");
-});
-
-// GET method to retrieve all data from the table
-app.get("/data", (req, res) => {
-  const sql = "SELECT * FROM my_table";
-  db.query(sql, (err, result) => {
+// Route to get all posts
+app.get("/api/get", (req, res) => {
+  db.query("SELECT * FROM client_requests", (err, result) => {
     if (err) {
-      throw err;
+      console.log(err);
     }
-    res.json(result);
+    res.send(result);
   });
 });
-
-// POST method to insert new data into the table
-app.post("/data", (req, res) => {
-  const { name, age } = req.body;
-  const sql = "INSERT INTO my_table (name, age) VALUES (?, ?)";
-  db.query(sql, [name, age], (err, result) => {
-    if (err) {
-      throw err;
+// Route to get one post
+app.get("/api/getFromId/:id", (req, res) => {
+  const id = req.params.id;
+  db.query(
+    "SELECT * FROM client_requests WHERE id = ?",
+    id,
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      }
+      res.send(result);
     }
-    res.json(result);
+  );
+});
+// Route for creating the post
+app.post("/api/create", (req, res) => {
+  const id = req.body.id;
+  const name = req.body.name;
+  const request = req.body.request;
+  console.log(id, name, request);
+  db.query(
+    "INSERT INTO client_requests (id, name, request) VALUES (?,?,?)",
+    [id, name, request],
+    (err, result) => {
+      if (err) {
+        console.log(err);
+      }
+      console.log(result);
+    }
+  );
+});
+
+// Route to delete a post
+app.delete("/api/delete/:id", (req, res) => {
+  const id = req.params.id;
+  db.query("DELETE FROM client_requests WHERE id= ?", id, (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(result);
+    }
   });
 });
-
-// DELETE method to remove data from the table
-app.delete("/data/:id", (req, res) => {
-  const { id } = req.params;
-  const sql = "DELETE FROM my_table WHERE id = ?";
-  db.query(sql, [id], (err, result) => {
-    if (err) {
-      throw err;
-    }
-    res.json(result);
-  });
-});
-
-// start the server on port 3000
-app.listen(3000, () => {
-  console.log("Server started on port 3000!");
-});
-
