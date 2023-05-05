@@ -98,6 +98,7 @@ function App() {
           alert(value);
         }
       });
+      window.location.reload();
   }
   function deleteOneProduct(deleteid) {
     console.log("Product to delete :", deleteid);
@@ -117,6 +118,7 @@ function App() {
         }
       });
     setChecked4(!checked4);
+    window.location.reload();
   }
   useEffect(() => {
     getAllProducts();
@@ -146,7 +148,7 @@ function App() {
       <Index />
       <AboutUs />
       <Services />
-      
+
       <h1>Catalog of Products</h1>
       <div>
         <h3>Show all available Products.</h3>

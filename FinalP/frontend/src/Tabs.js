@@ -20,7 +20,7 @@ export function AboutUs() {
         <div className="container-fluid">
           <a className="navbar-brand">
             <img
-              src="./images/cliftonLogo.jpeg"
+              src="FinalP/backend/images/cliftonLogo.jpeg"
               width="100px"
               height="100px"
               alt="logo"
@@ -275,7 +275,7 @@ w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
               golfing, and spending time with his wife and daughter.
             </p>
             <button
-              onClick={() => (window.location.href = "aboutus.html")}//Don't think this actually works
+              onClick={() => (window.location.href = "aboutus.html")} //Don't think this actually works
               className="btn btn-primary btn-lg"
               type="button"
             >
@@ -302,7 +302,7 @@ w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
               consultation and design
             </p>
             <button
-              onClick={() => (window.location.href = "services.html")}//Don't think this actually works
+              onClick={() => (window.location.href = "services.html")} //Don't think this actually works
               className="btn btn-primary btn-lg"
               type="button"
             >
