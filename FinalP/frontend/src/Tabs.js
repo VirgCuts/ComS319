@@ -414,9 +414,9 @@ export function Services(props) {
     
     return (
       <div style={{display: 'inline-block', position: 'relative'}}>
-        <div style={{display: 'flex'}}>
+        
           <img id ={id} src={src} alt={title} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} />
-        </div>
+        
         {showTooltip && <div style={{position: 'absolute', top: '100%', left: '50%', transform: 'translateX(-50%)', backgroundColor: 'black', color: 'white', padding: '0.5rem', borderRadius: '0.25rem', zIndex: '9999'}}>{title}</div>}
       </div>
     );
@@ -524,9 +524,11 @@ export function Services(props) {
                   solutions, such as temporary shoring and verification of
                   construction loading conditions.
                 </p>
+                <div style={{display: 'flex', alignItems: "flex-start"}}>
+                <ServiceImage src={bearingRemoval1} title="Wall Bearing Removal" id="serviceImage"/>
+                <ServiceImage src={bearingRemoval2} title="Wall Bearing Removal" id="serviceImage"/>
                 <ServiceImage src={placeholder} title="Placeholder Image" id="serviceImage"/>
-                <img id = "serviceImage" src={bearingRemoval2}></img>
-                <img id = "serviceImage" src={placeholder}></img>
+                </div>
               </li>
               <li style={{listStyleType: 'none'}}>
                 <h2>Steel Connection Design</h2>
@@ -536,9 +538,11 @@ export function Services(props) {
                 solutions, such as temporary shoring and verification of
                 construction loading conditions.
               </ul>
-              <img id = "serviceImage" src={placeholder}></img>
-              <img id = "serviceImage" src={placeholder}></img>
-              <img id = "serviceImage" src={placeholder}></img>
+              <div style={{display: 'flex'}}>
+                <ServiceImage src={placeholder} title="Placeholder Image" id="serviceImage"/>
+                <ServiceImage src={placeholder} title="Placeholder Image" id="serviceImage"/>
+                <ServiceImage src={placeholder} title="Placeholder Image" id="serviceImage"/>
+                </div>
             </div>
 
             <div className="col-md-6">
@@ -548,9 +552,11 @@ export function Services(props) {
                 We work with homeowners and their contractors to provide
                 engineering solutions for home additions and modifications.
               </p>
-              <img id = "serviceImage" src={residentialRemodel}></img>
-              <img id = "serviceImage" src={fireDamageIns1}></img>
-              <img id = "serviceImage" src={fireDamageIns2}></img>
+              <div style={{display: 'flex'}}>
+                <ServiceImage src={residentialRemodel} title="Remodel of Residential Home" id="serviceImage"/>
+                <ServiceImage src={fireDamageIns1} title="Fire Damage Inspection" id="serviceImage"/>
+                <ServiceImage src={fireDamageIns2} title="Fire Damage Inspection" id="serviceImage"/>
+                </div>
               <ul className="icon-list ps-0"></ul>
             </div>
           </div>
