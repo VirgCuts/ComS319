@@ -61,6 +61,30 @@ function App() {
       console.log("Wrong number of Product id.");
     }
   }
+  async function getImageNameById(id) {
+    try {
+      const response = await fetch(`http://localhost:4000/api/getImageFromId/${id}`);
+      const data = await response.json();
+      return data[0].name;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
+  function ImageComponent(id) {
+  const [imageName, setImageName] = useState('');
+
+  useEffect(() => {
+    async function fetchData() {
+      const name = await getImageNameById(id);
+      setImageName(name);
+    }
+    fetchData();
+  }, [id]);
+  return (
+    imageName
+  );
+}
 
   const showOneItem = oneProduct.map((el) => (
     <div key={el.id}>
@@ -142,12 +166,13 @@ function App() {
       else setViewer4(false);
     }
   }
+  
   return (
     <div>
-      <StudentInfo />
-      <Index />
-      <AboutUs />
-      <Services />
+      <StudentInfo image1={ImageComponent(1)} />
+      <Index image1={ImageComponent(1)} image11 = {ImageComponent(11)} image8 = {ImageComponent(8)} image4 = {ImageComponent(4)}/>
+      <AboutUs image1={ImageComponent(1)} image11 = {ImageComponent(11)} image9 = {ImageComponent(9)} image10 = {ImageComponent(10)} image2 = {ImageComponent(2)}/>
+      <Services image1={ImageComponent(1)}/>
 
       <h1>Catalog of Products</h1>
       <div>

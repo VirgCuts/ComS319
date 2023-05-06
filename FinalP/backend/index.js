@@ -20,6 +20,7 @@ app.get("/api/get", (req, res) => {
   });
 });
 // Route to get one post
+
 app.get("/api/getFromId/:id", (req, res) => {
   const id = req.params.id;
   db.query(
@@ -33,6 +34,19 @@ app.get("/api/getFromId/:id", (req, res) => {
     }
   );
 });
+app.get("/api/getImageFromId/:id", (req, res) => {
+    const id = req.params.id;
+    db.query(
+      "SELECT name FROM images WHERE id = ?",
+      id,
+      (err, result) => {
+        if (err) {
+          console.log(err);
+        }
+        res.send(result);
+      }
+    );
+  });
 // Route for creating the post
 app.post("/api/create", (req, res) => {
   const id = req.body.id;
