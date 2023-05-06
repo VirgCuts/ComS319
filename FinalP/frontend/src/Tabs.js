@@ -5,25 +5,21 @@ import { useState, useEffect } from "react";
 export var changePage = 3;
 
 function swapPages(pageNum) {
-  if(pageNum === 1) {
+  if (pageNum === 1) {
     changePage = 1;
-  }
-  else if (pageNum === 2) {
+  } else if (pageNum === 2) {
     changePage = 2;
-  }
-  else if (pageNum === 3) {
+  } else if (pageNum === 3) {
     changePage = 3;
-  }
-  else if (pageNum === 4) {
+  } else if (pageNum === 4) {
     changePage = 4;
-  }
-  else if (pageNum === 5) {
+  } else if (pageNum === 5) {
     changePage = 5;
   }
 }
 
 export function AboutUs(props) {
-  const logo= props.image1;
+  const logo = props.image1;
   const rob = props.image11;
   const placeholder = props.image9;
   const residentialRemodel = props.image10;
@@ -45,13 +41,17 @@ export function AboutUs(props) {
       <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
         <div className="container-fluid">
           <a className="navbar-brand">
-          <img src = {logo} width={"100px"} height={"100px"}></img>
+            <img src={logo} width={"100px"} height={"100px"}></img>
           </a>
 
           <div className="collapse navbar-collapse" id="navbarsExample03">
             <ul className="navbar-nav me-auto mb-2 mb-sm-0">
               <li className="nav-item">
-                <a className="nav-link" href="Home"  onClick={() =>(changePage(1))}>
+                <a
+                  className="nav-link"
+                  href="Home"
+                  onClick={() => changePage(1)}
+                >
                   Home
                 </a>
               </li>
@@ -59,7 +59,8 @@ export function AboutUs(props) {
                 <a
                   className="nav-link active"
                   aria-current="page"
-                  href="About Us" onClick={() =>(changePage(2))}
+                  href="About Us"
+                  onClick={() => changePage(2)}
                 >
                   About Us
                 </a>
@@ -92,48 +93,41 @@ export function AboutUs(props) {
           </p>
         </div>
         <div className="col-md-5">
-          <img
-            src={rob}
-            width="500px"
-            height="500px"
-          ></img>
+          <img src={rob} width="500px" height="500px"></img>
         </div>
       </div>
       <hr className="featurette-divider"></hr>
       <div className="row" id="padding">
         <div className="col-lg-4">
-          
-            <img
-              src={placeholder}
-              width="200px"
-              height="200px"
-              id="imageCircles"
-            ></img>
-          
+          <img
+            src={placeholder}
+            width="200px"
+            height="200px"
+            id="imageCircles"
+          ></img>
+
           <h2 className="fw-normal">Past Jobs</h2>
           <p>Lorem Epsum</p>
         </div>
         <div className="col-lg-4">
-          
-            <img
-              src={residentialRemodel}
-              width="200px"
-              height="200px"
-              id="imageCircles"
-            ></img>
-          
+          <img
+            src={residentialRemodel}
+            width="200px"
+            height="200px"
+            id="imageCircles"
+          ></img>
+
           <h2 className="fw-normal">PLACEHOLDER</h2>
           <p>Lorem Epsum</p>
         </div>
         <div className="col-lg-4">
-          
-            <img
-              src={bearingRemoval}
-              width="200px"
-              height="200px"
-              id="imageCircles"
-            ></img>
-         
+          <img
+            src={bearingRemoval}
+            width="200px"
+            height="200px"
+            id="imageCircles"
+          ></img>
+
           <h2 className="fw-normal">PLACEHOLDER</h2>
           <p>Lorem Epsum</p>
         </div>
@@ -178,7 +172,7 @@ export function AboutUs(props) {
 }
 
 export function Index(props) {
-  const logo= props.image1;
+  const logo = props.image1;
   const rob = props.image11;
   const services = props.image8;
   const call = props.image4;
@@ -210,8 +204,7 @@ w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
         <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
           <div className="container-fluid">
             <a className="navbar-brand">
-              
-              <img src = {logo} width={"100px"} height={"100px"}></img>
+              <img src={logo} width={"100px"} height={"100px"}></img>
             </a>
             <button
               className="navbar-toggler"
@@ -276,15 +269,18 @@ w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
             <div className="product-device product-device-2 shadow-sm d-none d-md-block"></div>
           </div>
         </div>
-
-        <div className="p-5 mb-4 bg-light rounded-3">
+      </main>
+      <div className="container">
+        <div className="row">
+        <div className="col-md-4 text-center d-flex align-items-stretch">
+        <div className="p-5 mb-4 bg-light rounded-3 d-flex flex-column ">
           <div className="container-fluid py-5">
             <p className="display-5 fw-bold" id="pointfont25">
               <img
                 src={rob}
                 width="200px"
                 height="200px"
-                id="imageCircles"
+                className="rounded-circle"
               ></img>{" "}
             </p>
             <p className="hometext">
@@ -303,54 +299,60 @@ w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
               Learn More
             </button>
           </div>
-        </div>
-      </main>
-
-      <main>
-        <div className="p-5 mb-4 bg-light rounded-3">
-          <div className="container-fluid py-5">
-            <p className="display-5 fw-bold" id="pointfont25">
-              <img
-                src={services}
-                width="200px"
-                height="200px"
-                id="imageCircles"
-              ></img>{" "}
-            </p>
-            <p>
-              {" "}
-              Our services include various commercial and residential
-              consultation and design
-            </p>
-            <button
-              onClick={() => (window.location.href = "services.html")} //Don't think this actually works
-              className="btn btn-primary btn-lg"
-              type="button"
-            >
-              Learn More
-            </button>
           </div>
         </div>
-      </main>
 
-      <main>
-        <div className="p-5 mb-4 bg-light rounded-3">
-          <div className="container-fluid py-5">
-            <p className="display-5 fw-bold" id="pointfont25">
-              <img
-                src={call}
-                width="200px"
-                height="200px"
-                id="imageCircles"
-              ></img>{" "}
-            </p>
-            <p>
-              Phone Number: 515-468-1480 Email:{" "}
-              <a href="Rob@cliftonstructural.com">Rob@cliftonstructural.com</a>
-            </p>
+        <div className="col-md-4 text-center d-flex align-items-stretch">
+          <div className="p-5 mb-4 bg-light rounded-3 d-flex flex-column">
+            <div className="container-fluid py-5">
+            
+              <p className="display-5 fw-bold" id="pointfont25">
+                <img
+                  src={services}
+                  width="200px"
+                  height="200px"
+                  className="rounded-circle"
+                ></img>{" "}
+              </p>
+              <p>
+                {" "}
+                Our services include various commercial and residential
+                consultation and design
+              </p>
+              <button
+                onClick={() => (window.location.href = "services.html")} //Don't think this actually works
+                className="btn btn-primary btn-lg"
+                type="button"
+              >
+                Learn More
+              </button>
+            </div>
+            </div>
+          </div>
+        
+
+          <div className="col-md-4 text-center d-flex align-items-stretch">
+          <div className="p-5 mb-4 bg-light rounded-3 d-flex flex-column">
+            <div className="container-fluid py-5">
+              <p className="display-5 fw-bold" id="pointfont25">
+                <img
+                  src={call}
+                  width="200px"
+                  height="200px"
+                  className="rounded-circle"
+                ></img>{" "}
+              </p>
+              <p>
+                Phone Number: 515-468-1480 Email:{" "}
+                <a href="Rob@cliftonstructural.com">
+                  Rob@cliftonstructural.com
+                </a>
+              </p>
+            </div>
           </div>
         </div>
-      </main>
+        </div>
+      </div>
 
       <footer>
         <div className="container">
@@ -399,31 +401,50 @@ export function Services(props) {
   const fireDamageIns2 = props.image6;
   const placeholder = props.image9;
   const residentialRemodel = props.image10;
-  const serviceImages = document.querySelectorAll('#serviceImage');
+  const serviceImages = document.querySelectorAll("#serviceImage");
 
-  const ServiceImage = ({src, title, id}) => {
+  const ServiceImage = ({ src, title, id }) => {
     const [showTooltip, setShowTooltip] = useState(false);
-    
+
     const handleMouseEnter = () => {
       setShowTooltip(true);
-    }
-    
+    };
+
     const handleMouseLeave = () => {
       setShowTooltip(false);
-    }
-    
+    };
+
     return (
-      <div style={{display: 'inline-block', position: 'relative'}}>
-        
-          <img id ={id} src={src} alt={title} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} />
-        
-        {showTooltip && <div style={{position: 'absolute', top: '100%', left: '50%', transform: 'translateX(-50%)', backgroundColor: 'black', color: 'white', padding: '0.5rem', borderRadius: '0.25rem', zIndex: '9999'}}>{title}</div>}
+      <div style={{ display: "inline-block", position: "relative" }}>
+        <img
+          id={id}
+          src={src}
+          alt={title}
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
+        />
+
+        {showTooltip && (
+          <div
+            style={{
+              position: "absolute",
+              top: "100%",
+              left: "50%",
+              transform: "translateX(-50%)",
+              backgroundColor: "black",
+              color: "white",
+              padding: "0.5rem",
+              borderRadius: "0.25rem",
+              zIndex: "9999",
+            }}
+          >
+            {title}
+          </div>
+        )}
       </div>
     );
   };
-  
 
-  
   return (
     //     <html>
     //       <head>
@@ -452,12 +473,7 @@ export function Services(props) {
         <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
           <div className="container-fluid">
             <a className="navbar-brand">
-              <img
-                src={logo}
-                width="100px"
-                height="100px"
-                alt="logo"
-              ></img>
+              <img src={logo} width="100px" height="100px" alt="logo"></img>
             </a>
 
             <div className="collapse navbar-collapse" id="navbarsExample03">
@@ -495,42 +511,67 @@ export function Services(props) {
       <main>
         <p className="services">
           &nbsp;&nbsp;&nbsp;Below is a summary of the structural engineering
-          services we offer in Iowa. Please contact us for a free consultation to
-          understand your specific needs.
+          services we offer in Iowa. Please contact us for a free consultation
+          to understand your specific needs.
         </p>
         <div className="col-lg-8 mx-auto p-4 py-md-5">
           <div className="row g-5">
             <div className="col-md-6">
               <h1 id="textDeco">Commercial</h1>
-              <ul className="icon-list ps-0" style={{ listStyleType: 'none'}}></ul>
-              <li style={{listStyleType: 'none'}}>
-                
+              <ul
+                className="icon-list ps-0"
+                style={{ listStyleType: "none" }}
+              ></ul>
+              <li style={{ listStyleType: "none" }}>
                 <h2>Building Design</h2>
                 <p>
                   We work with architects and owners to provide gravity and
                   lateral systems to support the design intent.
                 </p>
-                <div style={{display: 'flex'}}>
-                <ServiceImage src={placeholder} title="Placeholder Image" id="serviceImage"/>
-                <ServiceImage src={placeholder} title="Placeholder Image" id="serviceImage"/>
-                <ServiceImage src={placeholder} title="Placeholder Image" id="serviceImage"/>
+                <div style={{ display: "flex" }}>
+                  <ServiceImage
+                    src={placeholder}
+                    title="Placeholder Image"
+                    id="serviceImage"
+                  />
+                  <ServiceImage
+                    src={placeholder}
+                    title="Placeholder Image"
+                    id="serviceImage"
+                  />
+                  <ServiceImage
+                    src={placeholder}
+                    title="Placeholder Image"
+                    id="serviceImage"
+                  />
                 </div>
-                
               </li>
-              <li style={{listStyleType: 'none'}}>
+              <li style={{ listStyleType: "none" }}>
                 <h2>Construction Engineering</h2>
                 <p>
                   We work with contractors to provide construction phase
                   solutions, such as temporary shoring and verification of
                   construction loading conditions.
                 </p>
-                <div style={{display: 'flex', alignItems: "flex-start"}}>
-                <ServiceImage src={bearingRemoval1} title="Wall Bearing Removal" id="serviceImage"/>
-                <ServiceImage src={bearingRemoval2} title="Wall Bearing Removal" id="serviceImage"/>
-                <ServiceImage src={placeholder} title="Placeholder Image" id="serviceImage"/>
+                <div style={{ display: "flex", alignItems: "flex-start" }}>
+                  <ServiceImage
+                    src={bearingRemoval1}
+                    title="Wall Bearing Removal"
+                    id="serviceImage"
+                  />
+                  <ServiceImage
+                    src={bearingRemoval2}
+                    title="Wall Bearing Removal"
+                    id="serviceImage"
+                  />
+                  <ServiceImage
+                    src={placeholder}
+                    title="Placeholder Image"
+                    id="serviceImage"
+                  />
                 </div>
               </li>
-              <li style={{listStyleType: 'none'}}>
+              <li style={{ listStyleType: "none" }}>
                 <h2>Steel Connection Design</h2>
               </li>
               <ul className="icon-list ps-0">
@@ -538,11 +579,23 @@ export function Services(props) {
                 solutions, such as temporary shoring and verification of
                 construction loading conditions.
               </ul>
-              <div style={{display: 'flex'}}>
-                <ServiceImage src={placeholder} title="Placeholder Image" id="serviceImage"/>
-                <ServiceImage src={placeholder} title="Placeholder Image" id="serviceImage"/>
-                <ServiceImage src={placeholder} title="Placeholder Image" id="serviceImage"/>
-                </div>
+              <div style={{ display: "flex" }}>
+                <ServiceImage
+                  src={placeholder}
+                  title="Placeholder Image"
+                  id="serviceImage"
+                />
+                <ServiceImage
+                  src={placeholder}
+                  title="Placeholder Image"
+                  id="serviceImage"
+                />
+                <ServiceImage
+                  src={placeholder}
+                  title="Placeholder Image"
+                  id="serviceImage"
+                />
+              </div>
             </div>
 
             <div className="col-md-6">
@@ -552,11 +605,23 @@ export function Services(props) {
                 We work with homeowners and their contractors to provide
                 engineering solutions for home additions and modifications.
               </p>
-              <div style={{display: 'flex'}}>
-                <ServiceImage src={residentialRemodel} title="Remodel of Residential Home" id="serviceImage"/>
-                <ServiceImage src={fireDamageIns1} title="Fire Damage Inspection" id="serviceImage"/>
-                <ServiceImage src={fireDamageIns2} title="Fire Damage Inspection" id="serviceImage"/>
-                </div>
+              <div style={{ display: "flex" }}>
+                <ServiceImage
+                  src={residentialRemodel}
+                  title="Remodel of Residential Home"
+                  id="serviceImage"
+                />
+                <ServiceImage
+                  src={fireDamageIns1}
+                  title="Fire Damage Inspection"
+                  id="serviceImage"
+                />
+                <ServiceImage
+                  src={fireDamageIns2}
+                  title="Fire Damage Inspection"
+                  id="serviceImage"
+                />
+              </div>
               <ul className="icon-list ps-0"></ul>
             </div>
           </div>
