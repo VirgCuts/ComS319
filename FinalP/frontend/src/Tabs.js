@@ -51,7 +51,7 @@ export function AboutUs(props) {
           <div className="collapse navbar-collapse" id="navbarsExample03">
             <ul className="navbar-nav me-auto mb-2 mb-sm-0">
               <li className="nav-item">
-                <a className="nav-link" href="Home" onclick={"changePage(1)"}>
+                <a className="nav-link" href="Home"  onClick={() =>{changePage(1)}>
                   Home
                 </a>
               </li>
@@ -59,7 +59,7 @@ export function AboutUs(props) {
                 <a
                   className="nav-link active"
                   aria-current="page"
-                  href="About Us" onclick="changePage(2)"
+                  href="About Us" onClick={"changePage(2)"}
                 >
                   About Us
                 </a>
