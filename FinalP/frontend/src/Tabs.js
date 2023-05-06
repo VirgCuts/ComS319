@@ -1,5 +1,26 @@
 import "./Tabs.css";
 import "bootstrap/dist/css/bootstrap.css";
+import { useState, useEffect } from "react";
+
+export var changePage = 3;
+
+function swapPages(pageNum) {
+  if(pageNum === 1) {
+    changePage = 1;
+  }
+  else if (pageNum === 2) {
+    changePage = 2;
+  }
+  else if (pageNum === 3) {
+    changePage = 3;
+  }
+  else if (pageNum === 4) {
+    changePage = 4;
+  }
+  else if (pageNum === 5) {
+    changePage = 5;
+  }
+}
 
 export function AboutUs() {
   return (
@@ -20,7 +41,7 @@ export function AboutUs() {
         <div className="container-fluid">
           <a className="navbar-brand">
             <img
-              src="./images/cliftonLogo.jpeg"
+              src={`http://localhost:4000/backend/images/image1.JPG`}
               width="100px"
               height="100px"
               alt="logo"
@@ -30,7 +51,7 @@ export function AboutUs() {
           <div className="collapse navbar-collapse" id="navbarsExample03">
             <ul className="navbar-nav me-auto mb-2 mb-sm-0">
               <li className="nav-item">
-                <a className="nav-link" href="index.html">
+                <a className="nav-link" href="Home" onclick={"changePage(1)"}>
                   Home
                 </a>
               </li>
@@ -38,7 +59,7 @@ export function AboutUs() {
                 <a
                   className="nav-link active"
                   aria-current="page"
-                  href="AboutUs.html"
+                  href="About Us" onclick="changePage(2)"
                 >
                   About Us
                 </a>
