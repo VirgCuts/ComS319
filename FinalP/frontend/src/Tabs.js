@@ -1,5 +1,6 @@
 import "./Tabs.css";
 import "bootstrap/dist/css/bootstrap.css";
+import { useState, useEffect } from "react";
 
 export function AboutUs(props) {
   const logo = props.image1;
