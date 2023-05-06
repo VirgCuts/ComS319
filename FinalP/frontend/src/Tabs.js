@@ -374,7 +374,7 @@ export function Services(props) {
           services we offer in Iowa. Please contact us for a free consultation
           to understand your specific needs.
         </p>
-        <div className="col-lg-8 mx-auto p-4 py-md-5">
+        <div className="col-lg-12 mx-auto p-4 py-md-5">
           <div className="row g-5">
             <div className="col-md-6">
               <h1 id="textDeco">Commercial</h1>
