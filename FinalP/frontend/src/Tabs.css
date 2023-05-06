@@ -1,7 +1,11 @@
 #serviceNameId{
   font-size: large;
 }
-
+#serviceImage{
+  width: 33%;
+  
+  padding: 2px;
+}
 .img-with-text{
   width: 32%;
   height: 32%;

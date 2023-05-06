@@ -189,7 +189,7 @@ function App() {
       <StudentInfo image1={ImageComponent(1)} />
       <Index image1={ImageComponent(1)} image11 = {ImageComponent(11)} image8 = {ImageComponent(8)} image4 = {ImageComponent(4)}/>
       <AboutUs image1={ImageComponent(1)} image11 = {ImageComponent(11)} image9 = {ImageComponent(9)} image10 = {ImageComponent(10)} image2 = {ImageComponent(2)}/>
-      <Services image1={ImageComponent(1)}/>
+      <Services image1={ImageComponent(1)} image2={ImageComponent(2)} image3={ImageComponent(3)} image5={ImageComponent(5)} image6={ImageComponent(6)} image9={ImageComponent(9)} image10={ImageComponent(10)} />
 
       <h1>Catalog of Products</h1>
       <div>

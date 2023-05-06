@@ -393,6 +393,37 @@ w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
 
 export function Services(props) {
   const logo = props.image1;
+  const bearingRemoval1 = props.image2;
+  const bearingRemoval2 = props.image3;
+  const fireDamageIns1 = props.image5;
+  const fireDamageIns2 = props.image6;
+  const placeholder = props.image9;
+  const residentialRemodel = props.image10;
+  const serviceImages = document.querySelectorAll('#serviceImage');
+
+  const ServiceImage = ({src, title, id}) => {
+    const [showTooltip, setShowTooltip] = useState(false);
+    
+    const handleMouseEnter = () => {
+      setShowTooltip(true);
+    }
+    
+    const handleMouseLeave = () => {
+      setShowTooltip(false);
+    }
+    
+    return (
+      <div style={{display: 'inline-block', position: 'relative'}}>
+        <div style={{display: 'flex'}}>
+          <img id ={id} src={src} alt={title} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} />
+        </div>
+        {showTooltip && <div style={{position: 'absolute', top: '100%', left: '50%', transform: 'translateX(-50%)', backgroundColor: 'black', color: 'white', padding: '0.5rem', borderRadius: '0.25rem', zIndex: '9999'}}>{title}</div>}
+      </div>
+    );
+  };
+  
+
+  
   return (
     //     <html>
     //       <head>
@@ -462,32 +493,42 @@ export function Services(props) {
       </div>
 
       <main>
-        <p id="services">
+        <p className="services">
           &nbsp;&nbsp;&nbsp;Below is a summary of the structural engineering
-          services we offer in Iowa.Please contact us for a free consultation to
+          services we offer in Iowa. Please contact us for a free consultation to
           understand your specific needs.
         </p>
         <div className="col-lg-8 mx-auto p-4 py-md-5">
           <div className="row g-5">
             <div className="col-md-6">
               <h1 id="textDeco">Commercial</h1>
-              <ul className="icon-list ps-0"></ul>
-              <li>
+              <ul className="icon-list ps-0" style={{ listStyleType: 'none'}}></ul>
+              <li style={{listStyleType: 'none'}}>
+                
                 <h2>Building Design</h2>
                 <p>
                   We work with architects and owners to provide gravity and
                   lateral systems to support the design intent.
                 </p>
+                <div style={{display: 'flex'}}>
+                <ServiceImage src={placeholder} title="Placeholder Image" id="serviceImage"/>
+                <ServiceImage src={placeholder} title="Placeholder Image" id="serviceImage"/>
+                <ServiceImage src={placeholder} title="Placeholder Image" id="serviceImage"/>
+                </div>
+                
               </li>
-              <li>
+              <li style={{listStyleType: 'none'}}>
                 <h2>Construction Engineering</h2>
                 <p>
                   We work with contractors to provide construction phase
                   solutions, such as temporary shoring and verification of
                   construction loading conditions.
                 </p>
+                <ServiceImage src={placeholder} title="Placeholder Image" id="serviceImage"/>
+                <img id = "serviceImage" src={bearingRemoval2}></img>
+                <img id = "serviceImage" src={placeholder}></img>
               </li>
-              <li>
+              <li style={{listStyleType: 'none'}}>
                 <h2>Steel Connection Design</h2>
               </li>
               <ul className="icon-list ps-0">
@@ -495,6 +536,9 @@ export function Services(props) {
                 solutions, such as temporary shoring and verification of
                 construction loading conditions.
               </ul>
+              <img id = "serviceImage" src={placeholder}></img>
+              <img id = "serviceImage" src={placeholder}></img>
+              <img id = "serviceImage" src={placeholder}></img>
             </div>
 
             <div className="col-md-6">
@@ -504,6 +548,9 @@ export function Services(props) {
                 We work with homeowners and their contractors to provide
                 engineering solutions for home additions and modifications.
               </p>
+              <img id = "serviceImage" src={residentialRemodel}></img>
+              <img id = "serviceImage" src={fireDamageIns1}></img>
+              <img id = "serviceImage" src={fireDamageIns2}></img>
               <ul className="icon-list ps-0"></ul>
             </div>
           </div>
