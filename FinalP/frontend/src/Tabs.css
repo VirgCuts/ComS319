@@ -2,8 +2,8 @@
   font-size: large;
 }
 #serviceImage{
-  width: 33%;
-  
+  width: 100%;
+  height: 100%;
   padding: 2px;
 }
 .img-with-text{
@@ -39,3 +39,4 @@ padding-top:25px;
 .textDeco {
   text-decoration-line: underline;
 }
+
