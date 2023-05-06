@@ -22,7 +22,12 @@ function swapPages(pageNum) {
   }
 }
 
-export function AboutUs() {
+export function AboutUs(props) {
+  const logo= props.image1;
+  const rob = props.image11;
+  const placeholder = props.image9;
+  const residentialRemodel = props.image10;
+  const bearingRemoval = props.image2;
   return (
     //     <html>
     //       <head>
@@ -40,12 +45,7 @@ export function AboutUs() {
       <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
         <div className="container-fluid">
           <a className="navbar-brand">
-            <img
-              src={`http://localhost:4000/backend/images/image1.JPG`}
-              width="100px"
-              height="100px"
-              alt="logo"
-            ></img>
+          <img src = {logo} width={"100px"} height={"100px"}></img>
           </a>
 
           <div className="collapse navbar-collapse" id="navbarsExample03">
@@ -93,7 +93,7 @@ export function AboutUs() {
         </div>
         <div className="col-md-5">
           <img
-            src="./images/robClifton.jpeg"
+            src={rob}
             width="500px"
             height="500px"
           ></img>
@@ -102,38 +102,38 @@ export function AboutUs() {
       <hr className="featurette-divider"></hr>
       <div className="row" id="padding">
         <div className="col-lg-4">
-          <svg width="140" height="140">
+          
             <img
-              src="./images/placeholder.jpeg"
+              src={placeholder}
               width="200px"
               height="200px"
               id="imageCircles"
             ></img>
-          </svg>
+          
           <h2 className="fw-normal">Past Jobs</h2>
           <p>Lorem Epsum</p>
         </div>
         <div className="col-lg-4">
-          <svg width="140" height="140">
+          
             <img
-              src="./images/residentialRemodel.jpeg"
+              src={residentialRemodel}
               width="200px"
               height="200px"
               id="imageCircles"
             ></img>
-          </svg>
+          
           <h2 className="fw-normal">PLACEHOLDER</h2>
           <p>Lorem Epsum</p>
         </div>
         <div className="col-lg-4">
-          <svg width="140" height="140">
+          
             <img
-              src="./images/bearingWallRemovalKairos1.jpg"
+              src={bearingRemoval}
               width="200px"
               height="200px"
               id="imageCircles"
             ></img>
-          </svg>
+         
           <h2 className="fw-normal">PLACEHOLDER</h2>
           <p>Lorem Epsum</p>
         </div>
@@ -177,7 +177,11 @@ export function AboutUs() {
   );
 }
 
-export function Index() {
+export function Index(props) {
+  const logo= props.image1;
+  const rob = props.image11;
+  const services = props.image8;
+  const call = props.image4;
   return (
     //     <html>
     //       <head>
@@ -206,12 +210,8 @@ w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
         <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
           <div className="container-fluid">
             <a className="navbar-brand">
-              <img
-                src="./images/cliftonLogo.jpeg"
-                width="100px"
-                height="100px"
-                alt="logo"
-              ></img>
+              
+              <img src = {logo} width={"100px"} height={"100px"}></img>
             </a>
             <button
               className="navbar-toggler"
@@ -281,7 +281,7 @@ w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
           <div className="container-fluid py-5">
             <p className="display-5 fw-bold" id="pointfont25">
               <img
-                src="./images/robClifton.jpeg"
+                src={rob}
                 width="200px"
                 height="200px"
                 id="imageCircles"
@@ -296,7 +296,7 @@ w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
               golfing, and spending time with his wife and daughter.
             </p>
             <button
-              onClick={() => (window.location.href = "aboutus.html")}//Don't think this actually works
+              onClick={() => (window.location.href = "aboutus.html")} //Don't think this actually works
               className="btn btn-primary btn-lg"
               type="button"
             >
@@ -311,7 +311,7 @@ w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
           <div className="container-fluid py-5">
             <p className="display-5 fw-bold" id="pointfont25">
               <img
-                src="./images/ourServices.jpeg"
+                src={services}
                 width="200px"
                 height="200px"
                 id="imageCircles"
@@ -323,7 +323,7 @@ w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
               consultation and design
             </p>
             <button
-              onClick={() => (window.location.href = "services.html")}//Don't think this actually works
+              onClick={() => (window.location.href = "services.html")} //Don't think this actually works
               className="btn btn-primary btn-lg"
               type="button"
             >
@@ -338,7 +338,7 @@ w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
           <div className="container-fluid py-5">
             <p className="display-5 fw-bold" id="pointfont25">
               <img
-                src="./images/callForConsultation.jpeg"
+                src={call}
                 width="200px"
                 height="200px"
                 id="imageCircles"
@@ -391,7 +391,8 @@ w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
   );
 }
 
-export function Services() {
+export function Services(props) {
+  const logo = props.image1;
   return (
     //     <html>
     //       <head>
@@ -421,7 +422,7 @@ export function Services() {
           <div className="container-fluid">
             <a className="navbar-brand">
               <img
-                src="./images/cliftonLogo.jpeg"
+                src={logo}
                 width="100px"
                 height="100px"
                 alt="logo"
@@ -548,7 +549,8 @@ export function Services() {
   );
 }
 
-export function StudentInfo() {
+export function StudentInfo(props) {
+  const { images } = props;
   return (
     // <html>
     //   <head>
