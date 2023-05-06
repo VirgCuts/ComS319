@@ -573,7 +573,7 @@ export function StudentInfo(props) {
       <div>
         <p>
           SE/ComS319 Construction of User Interfaces, Spring 2023 <br />
-          March, 11th 2023 <br />
+          May, 6th 2023 <br />
           Carter Cutsforth: cvcuts@iastate.edu <br />
           Keenan Jacobs: kcjacobs@iastate.edu <br />
         </p>
