@@ -14,22 +14,6 @@ root.render(
 
 function App() {
 
-  if (changePage === 1) {
-    return (<StudentInfo />);
-  }
-  else if (changePage === 2) {
-
-    return(<Index />);
-  }
-  else if (changePage === 3) {
-
-    return(<AboutUs />);
-  }
-  else if (changePage === 4) {
-
-    return(<Services />);
-  }
-
   const [product, setProduct] = useState([]);
   const [oneProduct, setOneProduct] = useState([]);
   const [viewer1, setViewer1] = useState(false);
@@ -265,5 +249,21 @@ function App() {
       </div>
     </div>
   );
+
+  if (changePage === 1) {
+    return (<StudentInfo />);
+  }
+  else if (changePage === 2) {
+
+    return(<Index />);
+  }
+  else if (changePage === 3) {
+
+    return(<AboutUs />);
+  }
+  else if (changePage === 4) {
+
+    return(<Services />);
+  }
 }
 export default App;
