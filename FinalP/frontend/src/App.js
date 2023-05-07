@@ -185,7 +185,7 @@ function App() {
         return (
             <div>
             <div>
-              <h3>Show all available Products.</h3>
+              <h3>Show All Requests.</h3>
               <button onClick={() => getAllProducts()}>Show All ...</button>
               {viewer1 && <div>Products {showAllItems}</div>}
             </div>
@@ -199,11 +199,11 @@ function App() {
                 placeholder="id"
                 onChange={(e) => getOneProduct(e.target.value)}
               />
-              {viewer2 && <div>Product: {showOneItem}</div>}
+              {viewer2 && <div>Request: {showOneItem}</div>}
             </div>
             <hr></hr>
             <div>
-              <h3>Add a new request :</h3>
+              <h3>Send us a Request :</h3>
               <form action="">
                 <input
                   type="number"
@@ -236,21 +236,21 @@ function App() {
             <hr></hr>
           
           <form action="">
-          <h3> Update your Message </h3>
-          {viewer2 && <div>Message: {showOneItem}</div>}
+          <h3> Update your Request </h3>
+          {viewer2 && <div>Request: {showOneItem}</div>}
           <input
             type="text"
             id="updateIDinput"
-            name="message"
+            name="request"
             placeholder="id"
             onChange={(e) => getOneProduct(e.target.value)}
           />
 
           <input
             type="text"
-            id="message"
-            name="message"
-            placeholder="Update Message"
+            id="request"
+            name="request"
+            placeholder="Update Request"
             onChange={(e) => updateOneMessage(e.target.value)}
           />
           <button type="submit" onClick={handleOnSubmit}>
@@ -261,7 +261,7 @@ function App() {
            
             <hr></hr>
             <div>
-              <h3>Delete one product:</h3>
+              <h3>Delete A Request:</h3>
               <input
                 type="checkbox"
                 id="acceptdelete"
