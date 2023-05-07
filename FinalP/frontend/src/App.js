@@ -10,6 +10,8 @@ import {
   Taskbar,
 } from "./Tabs";
 import { Route, Routes } from "react-router-dom";
+//imports views from tabs and basically creates the view here to be rendered in index.js
+//also handles all requests with the database
 function App() {
 
     const [product, setProduct] = useState([]);

@@ -3,7 +3,8 @@ import "bootstrap/dist/css/bootstrap.css";
 import { useState, useEffect } from "react";
 
 import {Link, useMatch, useResolvedPath} from "react-router-dom";
-
+//Holds the html details for all page views as to keep clutter out of App.js 
+//Contains also the taskBar and footers which both uses react-router-dom to link the pages to a set of routes stated in App.js
 export function AboutUs(props) {
   const logo = props.image1;
   const rob = props.image11;
