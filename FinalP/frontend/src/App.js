@@ -1,8 +1,16 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import "./index.css";
-import { StudentInfo, Index, AboutUs, Services, Footer, Taskbar, page } from "./Tabs";
-import {Route, Routes} from "react-router-dom";
+import {
+  StudentInfo,
+  Index,
+  AboutUs,
+  Services,
+  Footer,
+  Taskbar,
+  page,
+} from "./Tabs";
+import { Route, Routes } from "react-router-dom";
 function App() {
 
     const [product, setProduct] = useState([]);
@@ -76,9 +84,7 @@ function App() {
       }
       fetchData();
     }, [id]);
-    return (
-      imageName
-    );
+    return imageName;
   }
   
     const showOneItem = oneProduct.map((el) => (
@@ -286,13 +292,10 @@ function App() {
         );
     }
 
-    
-    
-    
-    return (
-      <>
-        <Taskbar image1={ImageComponent(1)} />
-        <div className ="container">
+  return (
+    <>
+      <Taskbar image1={ImageComponent(1)} />
+      <div className="container">
         <Routes>
           <Route exact path="home" element={<Index image1={ImageComponent(1)} image11 = {ImageComponent(11)} image8 = {ImageComponent(8)} image4 = {ImageComponent(4)}/>} />
           <Route path="aboutus" element={<AboutUs image1={ImageComponent(1)} image11 = {ImageComponent(11)} image9 = {ImageComponent(9)} image10 = {ImageComponent(10)} image2 = {ImageComponent(2)}/>} />
