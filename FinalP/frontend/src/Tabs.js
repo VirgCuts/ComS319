@@ -34,41 +34,6 @@ export function AboutUs(props) {
         </div>
       </div>
       <hr className="featurette-divider"></hr>
-      <div className="row" id="padding">
-        <div className="col-lg-4">
-          <img
-            src={placeholder}
-            width="200px"
-            height="200px"
-            id="imageCircles"
-          ></img>
-
-          <h2 className="fw-normal">Past Jobs</h2>
-          <p>Lorem Epsum</p>
-        </div>
-        <div className="col-lg-4">
-          <img
-            src={residentialRemodel}
-            width="200px"
-            height="200px"
-            id="imageCircles"
-          ></img>
-
-          <h2 className="fw-normal">PLACEHOLDER</h2>
-          <p>Lorem Epsum</p>
-        </div>
-        <div className="col-lg-4">
-          <img
-            src={bearingRemoval}
-            width="200px"
-            height="200px"
-            id="imageCircles"
-          ></img>
-
-          <h2 className="fw-normal">PLACEHOLDER</h2>
-          <p>Lorem Epsum</p>
-        </div>
-      </div>
     </div>
   );
 }
@@ -135,7 +100,7 @@ w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
               now lives in Ankeny, Iowa. In his spare time, he enjoys hunting,
               golfing, and spending time with his wife and daughter.
             </p>
-            <ActiveLink  to="/services" className="btn btn-primary btn-lg"
+            <ActiveLink  to="/services" className="btn btn-primary btn-lg" id="nolist"
               type="button">
               Learn More
             </ActiveLink>
@@ -265,8 +230,8 @@ export function Services(props) {
       
         <div className="col-lg-12 mx-auto p-4 py-md-5">
           <div className="row g-5">
-            <div className="col-md-6">
-              <h1 id="textDeco">Commercial</h1>
+            <div className="col-md-6 bg-light p-2 m-1">
+              <h1  className="bg-light">Commercial</h1>
               <ul
                 className="icon-list ps-0"
                 style={{ listStyleType: "none" }}
@@ -347,7 +312,7 @@ export function Services(props) {
               </div>
             </div>
 
-            <div className="col-md-6">
+            <div className="col-md-5 bg-light p-2 m-1">
               <h1 id="textDeco">Residential</h1>
               <h2>Residential Consultation</h2>
               <p>
@@ -387,7 +352,7 @@ function ActiveLink({to, children, ...props}) {
   const isActive = useMatch( { path: resolvedPath.pathname, end : true});
 
   return (
-    <li className ={isActive ? "active" : ""}>
+    <li id ="nolist"className ={isActive ? "active" : ""}>
        <Link to= {to} {...props}>
         {children}
        </Link>

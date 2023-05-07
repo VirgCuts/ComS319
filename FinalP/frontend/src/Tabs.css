@@ -45,3 +45,6 @@ button {
   color : darkgray;
   background-color: #343a40;
 }
+#nolist{
+  list-style-type: none
+}
