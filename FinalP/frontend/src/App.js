@@ -124,7 +124,7 @@ function App() {
       fetch("http://127.0.0.1:4000/api/put", {
         method: "PUT",
         headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({_id:updateid, description: messageChange}), //fix this descriptionChange
+        body: JSON.stringify({_id:updateid, message: messageChange}), 
     })
     .then((response) => response.json())
     .then((data) => {
@@ -134,7 +134,7 @@ function App() {
       }
     });
     setChecked4(!checked4);
-    window.location.reload();
+    
       }
     
     function deleteOneProduct(deleteid) {
@@ -233,7 +233,7 @@ function App() {
               </form>
             </div>
 
-          
+            <hr></hr>
           
           <form action="">
           <h3> Update your Message </h3>
