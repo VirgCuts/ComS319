@@ -8,7 +8,6 @@ import {
   Services,
   Footer,
   Taskbar,
-  page,
 } from "./Tabs";
 import { Route, Routes } from "react-router-dom";
 function App() {
@@ -300,7 +299,8 @@ function App() {
           <Route exact path="home" element={<Index image1={ImageComponent(1)} image11 = {ImageComponent(11)} image8 = {ImageComponent(8)} image4 = {ImageComponent(4)}/>} />
           <Route path="aboutus" element={<AboutUs image1={ImageComponent(1)} image11 = {ImageComponent(11)} image9 = {ImageComponent(9)} image10 = {ImageComponent(10)} image2 = {ImageComponent(2)}/>} />
           <Route path="services" element={<Services image1={ImageComponent(1)} image2={ImageComponent(2)} image3={ImageComponent(3)} image5={ImageComponent(5)} image6={ImageComponent(6)} image9={ImageComponent(9)} image10={ImageComponent(10)} />} />
-          <Route path="contactus" element={catalogProducts()} />s
+          <Route path="contactus" element={catalogProducts()} />
+          <Route path="studentinfo" element= {<StudentInfo />} />
         </Routes>
 
 

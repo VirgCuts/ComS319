@@ -441,6 +441,11 @@ export function Footer() {
             Contact Us
           </ActiveLink>
         </li>
+        <li className="nav-item">
+        <ActiveLink to="/studentinfo" className="nav-link">
+            Students Information
+          </ActiveLink>
+        </li>
       </ul>
       <p className="text-center text-muted">
         Copyright &copy; 2023 Clifton Structural - All Rights Reserved.
@@ -477,6 +482,7 @@ export function StudentInfo(props) {
         <p>
           SE/ComS319 Construction of User Interfaces, Spring 2023 <br />
           May, 6th 2023 <br />
+          Dr. Abraham N. Aldaco Gastelum: aaldaco@iastate.edu  <br />
           Carter Cutsforth: cvcuts@iastate.edu <br />
           Keenan Jacobs: kcjacobs@iastate.edu <br />
         </p>
