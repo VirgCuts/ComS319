@@ -1,14 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import "./index.css";
-import {
-  StudentInfo,
-  Index,
-  AboutUs,
-  Services,
-  Footer,
-  Taskbar,
-} from "./Tabs";
+import { StudentInfo, Index, AboutUs, Services, Footer, Taskbar } from "./Tabs";
 import { Route, Routes } from "react-router-dom";
 //imports views from tabs and basically creates the view here to be rendered in index.js
 //also handles all requests with the database
@@ -20,14 +13,17 @@ function App() {
   const [viewer4, setViewer4] = useState(false);
   const [checked4, setChecked4] = useState(false);
   const [index, setIndex] = useState(0);
-  const [messageChange, setMessageChange] = useState();
+  const [updateRequest, setUpdateRequest] = useState({
+    id: 0,
+    request: "",
+  });
   // new Product
   const [addNewProduct, setAddNewProduct] = useState({
     id: 0,
     name: "",
     request: "",
   });
-
+  console.log(2);
   function getAllProducts() {
     fetch("http://127.0.0.1:4000/api/get")
       .then((response) => response.json())
@@ -106,6 +102,11 @@ function App() {
     }
   }
 
+  function handleChangeUpdate(evt) {
+    const { name, value } = evt.target;
+    setUpdateRequest((prevState) => ({ ...prevState, [name]: value }));
+  }
+
   function handleOnSubmit(e) {
     e.preventDefault();
     console.log(e.target.value);
@@ -126,20 +127,28 @@ function App() {
     window.location.reload();
   }
 
-  function updateOneMessage(updateid) {
-    fetch("http://127.0.0.1:4000/api/update", {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ _id: updateid, message: messageChange }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data) {
-          const value = Object.values(data);
-          alert(value);
+  async function updateOneMessage(e) {
+    e.preventDefault();
+    try {
+      const response = await fetch(
+        `http://127.0.0.1:4000/api/update/${updateRequest.id}`,
+        {
+          method: "PUT",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(updateRequest),
         }
-      });
-    setChecked4(!checked4);
+      );
+      const data = await response.json();
+      if (data) {
+        const value = Object.values(data);
+        alert(value);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+    window.location.reload();
   }
 
   function deleteOneProduct(deleteid) {
@@ -189,108 +198,107 @@ function App() {
   function catalogProducts() {
     return (
       <div>
-        <section class="mb-4">
-          <h2 class="h1-responsive font-weight-bold text-center my-4">
+        <section className="mb-4 bg-light p-2 m-2">
+          <h2 className="h1-responsive font-weight-bold text-center my-4">
             Contact us
           </h2>
 
-          <p class="text-center w-responsive mx-auto mb-5">
+          <p className="text-center w-responsive mx-auto mb-5">
             Do you have any questions? Please do not hesitate to contact us
             directly. Our team will come back to you within a matter of hours to
             help you.
           </p>
 
-          <div class="row">
-            <div class="col-md-9 mb-md-0 mb-5">
+          <div className="row">
+            <div className="col-md-9 mb-md-0 mb-5">
               <form
                 id="contact-form"
                 name="contact-form"
                 action="mail.php"
                 method="POST"
               >
-                <div class="row">
-                  <div class="col-md-6">
-                    <div class="md-form mb-0">
-                    <input
-              type="number"
-              placeholder=""
-              name="id"
-              value={addNewProduct.id}
-              onChange={handleChange}
-              className="form-control"
-            />
-                      <label for="name" class="">
+                <div className="row">
+                  <div className="col-md-6">
+                    <div className="md-form mb-0">
+                      <input
+                        type="number"
+                        placeholder=""
+                        id="id"
+                        value={addNewProduct.id}
+                        onChange={handleChange}
+                        className="form-control"
+                      />
+                      <label htmlFor="id" className="p-2">
                         ID
                       </label>
                     </div>
                   </div>
 
-                  <div class="col-md-6">
-                    <div class="md-form mb-0">
-                    <input
-              type="text"
-              placeholder=""
-              name="name"
-              value={addNewProduct.name}
-              onChange={handleChange}
-              className="form-control"
-            />
-                      <label for="email" class="">
+                  <div className="col-md-6">
+                    <div className="md-form mb-0">
+                      <input
+                        type="text"
+                        placeholder=""
+                        id="name"
+                        value={addNewProduct.name}
+                        onChange={handleChange}
+                        className="form-control"
+                      />
+                      <label htmlFor="name" className="p-2">
                         Your Name
                       </label>
                     </div>
                   </div>
                 </div>
 
-               
-
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="md-form">
-                    <textarea
-              type="request"
-              placeholder=""
-              name="request"
-              value={addNewProduct.request}
-              onChange={handleChange}
-              className="form-control md-textarea"
-            />
-                      <label for="message">Your message</label>
+                <div className="row">
+                  <div className="col-md-12">
+                    <div className="md-form">
+                      <textarea
+                        type="request"
+                        placeholder=""
+                        id="request"
+                        value={addNewProduct.request}
+                        onChange={handleChange}
+                        className="form-control md-textarea"
+                      />
+                      <label htmlFor="request" className="p-2">Your message</label>
                     </div>
                   </div>
                 </div>
               </form>
 
-              <div class="text-center text-md-left">
-              <button type="submit" onClick={handleOnSubmit}>
-              {" "}
-              submit{" "}
-            </button>
-            <hr></hr>
+              <div className="text-center text-md-left">
+                <button type="submit" onClick={handleOnSubmit}>
+                  {" "}
+                  submit{" "}
+                </button>  
               </div>
-              <div class="status"></div>
+              <div className="status"></div>
             </div>
-            <div class="col-md-3 text-center">
-              <ul class="list-unstyled mb-0">
+            
+            <div className="col-md-3 text-center">
+              <ul className="list-unstyled mb-0">
                 <li>
-                  <i class="fas fa-map-marker-alt fa-2x"></i>
+                  <i className="fas fa-map-marker-alt fa-2x"></i>
                   <p>San Francisco, CA 94126, USA</p>
                 </li>
 
                 <li>
-                  <i class="fas fa-phone mt-4 fa-2x"></i>
+                  <i className="fas fa-phone mt-4 fa-2x"></i>
                   <p>+ 01 234 567 89</p>
                 </li>
 
                 <li>
-                  <i class="fas fa-envelope mt-4 fa-2x"></i>
+                  <i className="fas fa-envelope mt-4 fa-2x"></i>
                   <p>contact@mdbootstrap.com</p>
                 </li>
               </ul>
             </div>
           </div>
         </section>
-
+        <hr></hr>
+        
         <div>
           <h3>Show all available Products.</h3>
           <button onClick={() => getAllProducts()}>Show All ...</button>
@@ -300,7 +308,7 @@ function App() {
         <div>
           <h3>Show one Request by Id:</h3>
           <input
-            type="text"
+            type="number"
             id="message"
             name="message"
             placeholder="id"
@@ -309,59 +317,66 @@ function App() {
           {viewer2 && <div>Product: {showOneItem}</div>}
         </div>
 
-
         <hr></hr>
 
-        <form action="">
+        <form onSubmit={updateOneMessage}>
           <h3> Update your Message </h3>
           {viewer2 && <div>Message: {showOneItem}</div>}
           <input
-            type="text"
+            type="number"
             id="updateIDinput"
-            name="request"
+            name="id"
             placeholder="id"
-            onChange={(e) => getOneProduct(e.target.value)}
+            value={updateRequest.id}
+            onChange={handleChangeUpdate}
+            className="form-control"
           />
+          <label htmlFor="updateIDinput" className="p-2">
+                        ID
+                      </label>
 
-          <input
-            type="text"
-            id="request"
+          <textarea
+            type="request"
+            className="form-control md-textarea"
             name="request"
+            id="request"
             placeholder="Update Request"
-            onChange={(e) => updateOneMessage(e.target.value)}
+            value={updateRequest.request}
+            onChange={handleChangeUpdate}
           />
-          <button type="submit" onClick={handleOnSubmit}>
-            submit
-          </button>
+          <label htmlFor="request" className="d-block p-2">
+                        Change your request
+                      </label>
+          <button type="submit">submit</button>
         </form>
-           
-           
-            <hr></hr>
-            <div>
-              <h3>Delete A Request:</h3>
-              <input
-                type="checkbox"
-                id="acceptdelete"
-                name="acceptdelete"
-                checked={checked4}
-                onChange={(e) => setChecked4(!checked4)}
-              />
-              <button onClick={() => getOneByOneProductPrev()}>Prev</button>
-              <button onClick={() => getOneByOneProductNext()}>Next</button>
-              <button onClick={() => deleteOneProduct(product[index].id)}>
-                Delete
-              </button>
-              {checked4 && (
-                <div key={product[index].id}>
-                  Id:{product[index].id} <br />
-                  Name: {product[index].name} <br />
-                  Request: {product[index].request} <br />
-                </div>
-              )}
+
+        <hr></hr>
+        <div className="">
+          <h3>Delete A Request:</h3>
+          <input
+            type="checkbox"
+            id="acceptdelete"
+            name="acceptdelete"
+            className="p-2 m-2"
+            checked={checked4}
+            onChange={(e) => setChecked4(!checked4)}
+          />
+          <button onClick={() => getOneByOneProductPrev()} id ="triangle" className="p-2 m-2">Prev</button>
+          <button onClick={() => getOneByOneProductNext()} id ="triangle" className="p-2 m-2">Next</button>
+          <button onClick={() => deleteOneProduct(product[index].id)} className="p-2 m-2">
+            Delete
+          </button>
+          {checked4 && (
+            <div key={product[index].id}>
+              Id:{product[index].id} <br />
+              Name: {product[index].name} <br />
+              Request: {product[index].request} <br />
             </div>
+          )}
         </div>
-        );
-    }
+      </div>
+    );
+  }
 
   return (
     <>
@@ -370,7 +385,7 @@ function App() {
         <Routes>
           <Route
             exact
-            path="home"
+            path="/"
             element={
               <Index
                 image1={ImageComponent(1)}
@@ -381,7 +396,7 @@ function App() {
             }
           />
           <Route
-            path="aboutus"
+            path="/aboutus"
             element={
               <AboutUs
                 image1={ImageComponent(1)}
@@ -393,7 +408,7 @@ function App() {
             }
           />
           <Route
-            path="services"
+            path="/services"
             element={
               <Services
                 image1={ImageComponent(1)}
@@ -406,7 +421,7 @@ function App() {
               />
             }
           />
-          <Route path="contactus" element={catalogProducts()} />s
+          <Route path="/contactus" element={catalogProducts()} />
         </Routes>
       </div>
 

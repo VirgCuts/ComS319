@@ -77,16 +77,14 @@ app.delete("/api/delete/:id", (req, res) => {
   });
 });
 
-app.put("/api/update", async (req, res) => {
-  try {
-    const query = {description: req.body.description};
-    await Product.findByIdAndUpdate(req.body.description);
-    const messageResponse = {
-      message: "Message"+ req.body._id + "updated correctly",
-    };
-    req.send(JSON.stringify(messageResponse));
-  }
-  catch(err) {
-    console.log("Error whilst updating :" + req.body._id);
-  }
+app.put("/api/update/:id", async (req, res) => {
+  
+    const id = req.params.id; 
+    const newRequest = req.body.request;
+    try {
+      const result =  await db.query("UPDATE client_requests SET request = ? WHERE id = ?", [newRequest, id]);
+      res.send("Updated succesfully");
+    } catch (err) {
+      console.log(err);
+    }
 }); 

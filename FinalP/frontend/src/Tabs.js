@@ -6,6 +6,7 @@ import {Link, useMatch, useResolvedPath} from "react-router-dom";
 //Holds the html details for all page views as to keep clutter out of App.js 
 //Contains also the taskBar and footers which both uses react-router-dom to link the pages to a set of routes stated in App.js
 export function AboutUs(props) {
+  console.log(3);
   const logo = props.image1;
   const rob = props.image11;
   const placeholder = props.image9;
@@ -40,6 +41,7 @@ export function AboutUs(props) {
 }
 
 export function Index(props) {
+  console.log(4);
   const logo = props.image1;
   const rob = props.image11;
   const services = props.image8;
@@ -164,6 +166,7 @@ w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
 }
 
 export function Services(props) {
+  console.log(5);
   const logo = props.image1;
   const bearingRemoval1 = props.image2;
   const bearingRemoval2 = props.image3;
@@ -349,18 +352,20 @@ export function Services(props) {
   );
 }
 function ActiveLink({to, children, ...props}) {
+  console.log(6);
   const resolvedPath = useResolvedPath(to);
   const isActive = useMatch( { path: resolvedPath.pathname, end : true});
 
   return (
-    <li id ="nolist"className ={isActive ? "active" : ""}>
+    <div className ={isActive ? "active" : ""}>
        <Link to= {to} {...props}>
         {children}
        </Link>
-    </li>
+    </div>
   )
 }
 export function Taskbar(props) {
+  console.log(7);
   const logo = props.image1
   return (
 <header>
@@ -385,7 +390,7 @@ export function Taskbar(props) {
       <div className="collapse navbar-collapse" id="navbarsExample03">
         <ul className="navbar-nav me-auto mb-2 mb-sm-0">
           <li className="nav-item-active">
-            <ActiveLink to="/home" className="nav-link">
+            <ActiveLink to="/" className="nav-link">
               Home
             </ActiveLink>
           </li>
@@ -417,6 +422,7 @@ export function Taskbar(props) {
 }
 
 export function Footer() {
+  console.log(8);
   return (
       <footer>
   <div className="container">
@@ -467,6 +473,7 @@ export function Footer() {
   );
 }
 export function StudentInfo(props) {
+  console.log(9);
   const { images } = props;
   const logo = props.image1;
   return (
