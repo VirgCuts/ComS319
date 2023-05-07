@@ -77,7 +77,7 @@ app.delete("/api/delete/:id", (req, res) => {
   });
 });
 
-app.put("/update", async (req, res) => {
+app.put("/api/update", async (req, res) => {
   try {
     const query = {description: req.body.description};
     await Product.findByIdAndUpdate(req.body.description);
