@@ -1,7 +1,9 @@
 import "./Tabs.css";
 import "bootstrap/dist/css/bootstrap.css";
 import { useState, useEffect } from "react";
-import {Link} from "react-router-dom";
+
+import {Link, useMatch, useResolvedPath} from "react-router-dom";
+
 export function AboutUs(props) {
   const logo = props.image1;
   const rob = props.image11;
@@ -133,13 +135,11 @@ w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
               now lives in Ankeny, Iowa. In his spare time, he enjoys hunting,
               golfing, and spending time with his wife and daughter.
             </p>
-            <button
-              //onClick={() => } //Don't think this actually works
-              className="btn btn-primary btn-lg"
-              type="button"
-            >
+            <ActiveLink  to="/services" className="btn btn-primary btn-lg"
+              type="button">
               Learn More
-            </button>
+            </ActiveLink>
+            
           </div>
           </div>
         </div>
@@ -161,13 +161,11 @@ w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
                 Our services include various commercial and residential
                 consultation and design
               </p>
-              <button
-                //onClick={() => } //Don't think this actually works
-                className="btn btn-primary btn-lg"
-                type="button"
-              >
-                Learn More
-              </button>
+              <ActiveLink  to="/aboutus" className="btn btn-primary btn-lg"
+              type="button">
+              Learn More
+              </ActiveLink>
+              
             </div>
             </div>
           </div>
@@ -265,11 +263,11 @@ export function Services(props) {
       </section>
       <main>
         <p id="services">
-          &nbsp;&nbsp;&nbsp;Below is a summary of the structural engineering
+          Below is a summary of the structural engineering
           services we offer in Iowa. Please contact us for a free consultation
           to understand your specific needs.
         </p>
-        <div className="col-lg-12 mx-auto p-4 py-md-5">
+        <div className="col-lg-8 mx-auto p-4 py-md-5">
           <div className="row g-5">
             <div className="col-md-6">
               <h1 id="textDeco">Commercial</h1>
@@ -388,7 +386,18 @@ export function Services(props) {
 
   );
 }
+function ActiveLink({to, children, ...props}) {
+  const resolvedPath = useResolvedPath(to);
+  const isActive = useMatch( { path: resolvedPath.pathname, end : true});
 
+  return (
+    <li className ={isActive ? "active" : ""}>
+       <Link to= {to} {...props}>
+        {children}
+       </Link>
+    </li>
+  )
+}
 export function Taskbar() {
   return (
 <header>
@@ -412,25 +421,25 @@ export function Taskbar() {
 
       <div className="collapse navbar-collapse" id="navbarsExample03">
         <ul className="navbar-nav me-auto mb-2 mb-sm-0">
-          <li className="nav-item">
-            <Link to="/home" className="nav-link">
+          <li className="nav-item-active">
+            <ActiveLink to="/home" className="nav-link">
               Home
-            </Link>
+            </ActiveLink>
           </li>
           <li className="nav-item">
-            <Link to="/aboutus"  className="nav-link">
+            <ActiveLink to="/aboutus"  className="nav-link">
               About Us
-            </Link>
+            </ActiveLink>
           </li>
           <li className="nav-item">
-            <Link  to="/services" className="nav-link">
+            <ActiveLink  to="/services" className="nav-link">
               Services
-            </Link>
+            </ActiveLink>
           </li>
           <li className="nav-item">
-          <Link to="/contactus" className="nav-link">
+          <ActiveLink to="/contactus" className="nav-link">
             Contact Us
-          </Link>
+          </ActiveLink>
         </li>
         </ul>
         <form role="search"></form>
@@ -451,24 +460,24 @@ export function Footer() {
     <footer className="py-3 my-4">
       <ul className="nav justify-content-center border-bottom pb-3 mb-3">
         <li className="nav-item">
-          <a className="nav-link px-2 text-muted">
-            Home
-          </a>
+          <ActiveLink to="/home" className="nav-link">
+              Home
+            </ActiveLink>
         </li>
         <li className="nav-item">
-          <a className="nav-link px-2 text-muted">
-            About Us
-          </a>
+        <ActiveLink to="/aboutus"  className="nav-link">
+              About Us
+            </ActiveLink>
         </li>
         <li className="nav-item">
-          <a className="nav-link px-2 text-muted">
-            Services
-          </a>
+        <ActiveLink  to="/services" className="nav-link">
+              Services
+            </ActiveLink>
         </li>
         <li className="nav-item">
-          <a className="nav-link">
+        <ActiveLink to="/contactus" className="nav-link">
             Contact Us
-          </a>
+          </ActiveLink>
         </li>
       </ul>
       <p className="text-center text-muted">
