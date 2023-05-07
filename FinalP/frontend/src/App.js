@@ -1,8 +1,8 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
 import { useState, useEffect } from "react";
 import "./index.css";
-import { StudentInfo, Index, AboutUs, Services, changePage } from "./Tabs";
+import { StudentInfo, Index, AboutUs, Services, Footer, Taskbar, page } from "./Tabs";
+import {Route, Routes} from "react-router-dom";
 function App() {
 
     const [product, setProduct] = useState([]);
@@ -162,65 +162,6 @@ function App() {
       }
     }
     
-    function taskBar() {
-        return (
-      <header>
-        <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
-          <div className="container-fluid">
-            <a className="navbar-brand">
-              
-              <img width={"100px"} height={"100px"}></img>
-            </a>
-            <button
-              className="navbar-toggler"
-              type="button"
-              data-bs-toggle="collapse"
-              data-bs-target="#navbarsExample03"
-              aria-controls="navbarsExample03"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span className="navbar-toggler-icon"></span>
-            </button>
-
-            <div className="collapse navbar-collapse" id="navbarsExample03">
-              <ul className="navbar-nav me-auto mb-2 mb-sm-0">
-                <li className="nav-item">
-                  <a 
-                  to ="/index"
-                    className="nav-link active"
-                    aria-current="page"
-                    href="home"
-                  >
-                    Home
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a to ="/about" className="nav-link" href="aboutus">
-                    About Us
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a to ="/services"className="nav-link" href="services">
-                    Services
-                  </a>
-                </li>
-                <li className="nav-item">
-                <a to ="/studentInfo" className="nav-link" href="contactus">
-                  Contact Us
-                </a>
-              </li>
-              </ul>
-              <form role="search"></form>
-            </div>
-          </div>
-        </nav>
-      
-      </header>
-      
-        );
-    }
-
     function catalogProducts() {
         return (
             <div>
@@ -297,18 +238,27 @@ function App() {
             </div>
         </div>
         );
-       }
-       
+    }
+
+    
+    
+    
     return (
-      <div>
-        {taskBar()}
-        <StudentInfo image1={ImageComponent(1)} />
-        <Index image1={ImageComponent(1)} image11 = {ImageComponent(11)} image8 = {ImageComponent(8)} image4 = {ImageComponent(4)}/>
-        <AboutUs image1={ImageComponent(1)} image11 = {ImageComponent(11)} image9 = {ImageComponent(9)} image10 = {ImageComponent(10)} image2 = {ImageComponent(2)}/>
-        <Services image1={ImageComponent(1)} image2={ImageComponent(2)} image3={ImageComponent(3)} image5={ImageComponent(5)} image6={ImageComponent(6)} image9={ImageComponent(9)} image10={ImageComponent(10)} />
-        
-        {catalogProducts()}
+      <>
+        <Taskbar />
+        <div className ="container">
+        <Routes>
+          <Route path="home" element={<Index image1={ImageComponent(1)} image11 = {ImageComponent(11)} image8 = {ImageComponent(8)} image4 = {ImageComponent(4)}/>} />
+          <Route path="aboutus" element={<AboutUs image1={ImageComponent(1)} image11 = {ImageComponent(11)} image9 = {ImageComponent(9)} image10 = {ImageComponent(10)} image2 = {ImageComponent(2)}/>} />
+          <Route path="services" element={<Services image1={ImageComponent(1)} image2={ImageComponent(2)} image3={ImageComponent(3)} image5={ImageComponent(5)} image6={ImageComponent(6)} image9={ImageComponent(9)} image10={ImageComponent(10)} />} />
+          <Route path="contactus" element={catalogProducts()} />s
+        </Routes>
+
+
         </div>
+    
+        {Footer()}
+      </>
     );
   }
   export default App;

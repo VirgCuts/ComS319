@@ -1,7 +1,7 @@
 import "./Tabs.css";
 import "bootstrap/dist/css/bootstrap.css";
 import { useState, useEffect } from "react";
-
+import {Link} from "react-router-dom";
 export function AboutUs(props) {
   const logo = props.image1;
   const rob = props.image11;
@@ -9,18 +9,6 @@ export function AboutUs(props) {
   const residentialRemodel = props.image10;
   const bearingRemoval = props.image2;
   return (
-    //     <html>
-    //       <head>
-    //         <link
-    //           href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-
-    // alpha1/dist/css/bootstrap.min.css"
-    //           rel="stylesheet"
-    //           integrity="sha384-
-    // GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
-    //           crossOrigin="anonymous"
-    //         ></link>
-    //         <title>HomePage</title>
-    //       </head>
     <div>
       <hr className="featurette-divider"></hr>
       <div className="row featurette">
@@ -79,47 +67,7 @@ export function AboutUs(props) {
           <p>Lorem Epsum</p>
         </div>
       </div>
-      <footer>
-        <div className="container">
-          <footer className="py-3 my-4">
-            <ul className="nav justify-content-center border-bottom pb-3 mb-3">
-              <li className="nav-item">
-                <a href="index.html" className="nav-link px-2 text-muted">
-                  Home
-                </a>
-              </li>
-              <li className="nav-item">
-                <a href="AboutUs.html" className="nav-link px-2 text-muted">
-                  About Us
-                </a>
-              </li>
-              <li className="nav-item">
-                <a href="services.html" className="nav-link px-2 text-muted">
-                  Services
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="services.html">
-                  Contact Us
-                </a>
-              </li>
-            </ul>
-            <p className="text-center text-muted">
-              Copyright &copy; 2023 Clifton Structural - All Rights Reserved.
-            </p>
-            <p className="text-center text-muted">Need a Consultation?</p>
-            <p className="text-center text-muted">Phone: 515-468-1480 </p>
-            <p className="text-center text-muted">
-              Email:{" "}
-              <a href="Mailto:Rob@cliftonstructural.com">
-                Rob@cliftonstructural.com
-              </a>
-            </p>
-          </footer>
-        </div>
-      </footer>
     </div>
-    // </html>
   );
 }
 
@@ -129,18 +77,6 @@ export function Index(props) {
   const services = props.image8;
   const call = props.image4;
   return (
-    //     <html>
-    //       <head>
-    //         <link
-    //           href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-
-    // alpha1/dist/css/bootstrap.min.css"
-    //           rel="stylesheet"
-    //           integrity="sha384-
-    // GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
-    //           crossOrigin="anonymous"
-    //         ></link>
-    //         <title>HomePage</title>
-    //       </head>
     <div>
       <section>
         <script
@@ -198,7 +134,7 @@ w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
               golfing, and spending time with his wife and daughter.
             </p>
             <button
-              onClick={() => (window.location.href = "aboutus.html")} //Don't think this actually works
+              //onClick={() => } //Don't think this actually works
               className="btn btn-primary btn-lg"
               type="button"
             >
@@ -226,7 +162,7 @@ w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
                 consultation and design
               </p>
               <button
-                onClick={() => (window.location.href = "services.html")} //Don't think this actually works
+                //onClick={() => } //Don't think this actually works
                 className="btn btn-primary btn-lg"
                 type="button"
               >
@@ -259,48 +195,7 @@ w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
         </div>
         </div>
       </div>
-
-      <footer>
-        <div className="container">
-          <footer className="py-3 my-4">
-            <ul className="nav justify-content-center border-bottom pb-3 mb-3">
-              <li className="nav-item">
-                <a href="index.html" className="nav-link px-2 text-muted">
-                  Home
-                </a>
-              </li>
-              <li className="nav-item">
-                <a href="AboutUs.html" className="nav-link px-2 text-muted">
-                  About Us
-                </a>
-              </li>
-              <li className="nav-item">
-                <a href="services.html" className="nav-link px-2 text-muted">
-                  Services
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="services.html">
-                  Contact Us
-                </a>
-              </li>
-            </ul>
-            <p className="text-center text-muted">
-              Copyright &copy; 2023 Clifton Structural - All Rights Reserved.
-            </p>
-            <p className="text-center text-muted">Need a Consultation?</p>
-            <p className="text-center text-muted">Phone: 515-468-1480 </p>
-            <p className="text-center text-muted">
-              Email:{" "}
-              <a href="Mailto:Rob@cliftonstructural.com">
-                Rob@cliftonstructural.com
-              </a>
-            </p>
-          </footer>
-        </div>
-      </footer>
     </div>
-    // </html>
   );
 }
 
@@ -488,50 +383,111 @@ export function Services(props) {
         </div>
       </main>
 
-      <footer>
-        <div className="container">
-          <footer className="py-3 my-4">
-            <ul className="nav justify-content-center border-bottom pb-3 mb-3">
-              <li className="nav-item">
-                <a href="index.html" className="nav-link px-2 text-muted">
-                  Home
-                </a>
-              </li>
-              <li className="nav-item">
-                <a href="AboutUs.html" className="nav-link px-2 text-muted">
-                  About Us
-                </a>
-              </li>
-              <li className="nav-item">
-                <a href="services.html" className="nav-link px-2 text-muted">
-                  Services
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="services.html">
-                  Contact Us
-                </a>
-              </li>
-            </ul>
-            <p className="text-center text-muted">
-              Copyright &copy; 2023 Clifton Structural - All Rights Reserved.
-            </p>
-            <p className="text-center text-muted">Need a Consultation?</p>
-            <p className="text-center text-muted">Phone: 515-468-1480 </p>
-            <p className="text-center text-muted">
-              Email:{" "}
-              <a href="Mailto:Rob@cliftonstructural.com">
-                Rob@cliftonstructural.com
-              </a>
-            </p>
-          </footer>
-        </div>
-      </footer>
+      
     </div>
-    // </html>
+
   );
 }
 
+export function Taskbar() {
+  return (
+<header>
+  <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
+    <div className="container-fluid">
+      <a className="navbar-brand">
+        
+        <img width={"100px"} height={"100px"}></img>
+      </a>
+      <button
+        className="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarsExample03"
+        aria-controls="navbarsExample03"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span className="navbar-toggler-icon"></span>
+      </button>
+
+      <div className="collapse navbar-collapse" id="navbarsExample03">
+        <ul className="navbar-nav me-auto mb-2 mb-sm-0">
+          <li className="nav-item">
+            <Link to="/home" className="nav-link">
+              Home
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link to="/aboutus"  className="nav-link">
+              About Us
+            </Link>
+          </li>
+          <li className="nav-item">
+            <Link  to="/services" className="nav-link">
+              Services
+            </Link>
+          </li>
+          <li className="nav-item">
+          <Link to="/contactus" className="nav-link">
+            Contact Us
+          </Link>
+        </li>
+        </ul>
+        <form role="search"></form>
+      </div>
+    </div>
+  </nav>
+
+</header>
+
+  );
+  
+}
+
+export function Footer() {
+  return (
+      <footer>
+  <div className="container">
+    <footer className="py-3 my-4">
+      <ul className="nav justify-content-center border-bottom pb-3 mb-3">
+        <li className="nav-item">
+          <a className="nav-link px-2 text-muted">
+            Home
+          </a>
+        </li>
+        <li className="nav-item">
+          <a className="nav-link px-2 text-muted">
+            About Us
+          </a>
+        </li>
+        <li className="nav-item">
+          <a className="nav-link px-2 text-muted">
+            Services
+          </a>
+        </li>
+        <li className="nav-item">
+          <a className="nav-link">
+            Contact Us
+          </a>
+        </li>
+      </ul>
+      <p className="text-center text-muted">
+        Copyright &copy; 2023 Clifton Structural - All Rights Reserved.
+      </p>
+      <p className="text-center text-muted">Need a Consultation?</p>
+      
+      <p className="text-center text-muted">Phone: 515-468-1480 </p>
+      <p className="text-center text-muted">
+        Email:{" "}
+        <a href="Mailto:Rob@cliftonstructural.com">
+          Rob@cliftonstructural.com
+        </a>
+      </p>
+    </footer>
+  </div>
+</footer>
+  );
+}
 export function StudentInfo(props) {
   const { images } = props;
   const logo = props.image1;
