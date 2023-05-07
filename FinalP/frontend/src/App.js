@@ -245,7 +245,7 @@ function App() {
     
     return (
       <>
-        <Taskbar />
+        <Taskbar image1={ImageComponent(1)} />
         <div className ="container">
         <Routes>
           <Route exact path="home" element={<Index image1={ImageComponent(1)} image11 = {ImageComponent(11)} image8 = {ImageComponent(8)} image4 = {ImageComponent(4)}/>} />
