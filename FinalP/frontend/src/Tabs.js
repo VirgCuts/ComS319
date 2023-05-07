@@ -267,7 +267,7 @@ export function Services(props) {
           services we offer in Iowa. Please contact us for a free consultation
           to understand your specific needs.
         </p>
-        <div className="col-lg-8 mx-auto p-4 py-md-5">
+        <div className="col-lg-12 mx-auto p-4 py-md-5">
           <div className="row g-5">
             <div className="col-md-6">
               <h1 id="textDeco">Commercial</h1>
@@ -398,14 +398,15 @@ function ActiveLink({to, children, ...props}) {
     </li>
   )
 }
-export function Taskbar() {
+export function Taskbar(props) {
+  const logo = props.image1
   return (
 <header>
   <nav className="navbar navbar-expand-sm navbar-dark bg-dark">
     <div className="container-fluid">
       <a className="navbar-brand">
         
-        <img width={"100px"} height={"100px"}></img>
+        <img src={logo} width={"100px"} height={"100px"}></img>
       </a>
       <button
         className="navbar-toggler"
