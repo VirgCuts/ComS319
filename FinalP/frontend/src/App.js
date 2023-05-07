@@ -12,6 +12,7 @@ function App() {
     const [viewer4, setViewer4] = useState(false);
     const [checked4, setChecked4] = useState(false);
     const [index, setIndex] = useState(0);
+    const  [messageChange, setMessageChange] = useState();  
     // new Product
     const [addNewProduct, setAddNewProduct] = useState({
       id: 0,
@@ -111,13 +112,31 @@ function App() {
           console.log("Post a new product completed");
           console.log(data);
           if (data) {
-            //const keys = Object.keys(data);
+
             const value = Object.values(data);
             alert(value);
           }
         });
         window.location.reload();
-    }
+      }
+
+  function updateOneMessage(updateid) {
+      fetch("http://127.0.0.1:4000/api/put", {
+        method: "PUT",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({_id:updateid, description: messageChange}), //fix this descriptionChange
+    })
+    .then((response) => response.json())
+    .then((data) => {
+      if(data) {
+        const value = Object.values(data);
+        alert(value);
+      }
+    });
+    setChecked4(!checked4);
+    window.location.reload();
+      }
+    
     function deleteOneProduct(deleteid) {
       console.log("Product to delete :", deleteid);
       fetch("http://127.0.0.1:4000/api/delete/" + deleteid, {
@@ -130,7 +149,6 @@ function App() {
           console.log("Delete a product completed : ", deleteid);
           console.log(data);
           if (data) {
-            //const keys = Object.keys(data);
             const value = Object.values(data);
             alert(value);
           }
@@ -138,6 +156,7 @@ function App() {
       setChecked4(!checked4);
       window.location.reload();
     }
+    
     useEffect(() => {
       getAllProducts();
     }, []);
@@ -213,6 +232,33 @@ function App() {
                 </button>
               </form>
             </div>
+
+          
+          
+          <form action="">
+          <h3> Update your Message </h3>
+          {viewer2 && <div>Message: {showOneItem}</div>}
+          <input
+            type="text"
+            id="updateIDinput"
+            name="message"
+            placeholder="id"
+            onChange={(e) => getOneProduct(e.target.value)}
+          />
+
+          <input
+            type="text"
+            id="message"
+            name="message"
+            placeholder="Update Message"
+            onChange={(e) => updateOneMessage(e.target.value)}
+          />
+          <button type="submit" onClick={handleOnSubmit}>
+            submit
+          </button>
+        </form>
+           
+           
             <hr></hr>
             <div>
               <h3>Delete one product:</h3>
@@ -261,5 +307,5 @@ function App() {
       </>
     );
   }
+
   export default App;
-  

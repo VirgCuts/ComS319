@@ -161,7 +161,7 @@ w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
                 Our services include various commercial and residential
                 consultation and design
               </p>
-              <ActiveLink  to="/aboutus" className="btn btn-primary btn-lg"
+              <ActiveLink  to="/aboutus" className="btn btn-primary btn-lg" 
               type="button">
               Learn More
               </ActiveLink>
@@ -262,11 +262,7 @@ export function Services(props) {
         <script src="./code.js"></script>
       </section>
       <main>
-        <p id="services">
-          Below is a summary of the structural engineering
-          services we offer in Iowa. Please contact us for a free consultation
-          to understand your specific needs.
-        </p>
+      
         <div className="col-lg-12 mx-auto p-4 py-md-5">
           <div className="row g-5">
             <div className="col-md-6">
@@ -487,6 +483,7 @@ export function Footer() {
       <p className="text-center text-muted">Need a Consultation?</p>
       
       <p className="text-center text-muted">Phone: 515-468-1480 </p>
+      
       <p className="text-center text-muted">
         Email:{" "}
         <a href="Mailto:Rob@cliftonstructural.com">

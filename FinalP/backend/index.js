@@ -76,3 +76,17 @@ app.delete("/api/delete/:id", (req, res) => {
     }
   });
 });
+
+app.put("/update", async (req, res) => {
+  try {
+    const query = {description: req.body.description};
+    await Product.findByIdAndUpdate(req.body.description);
+    const messageResponse = {
+      message: "Message"+ req.body._id + "updated correctly",
+    };
+    req.send(JSON.stringify(messageResponse));
+  }
+  catch(err) {
+    console.log("Error whilst updating :" + req.body._id);
+  }
+}); 
