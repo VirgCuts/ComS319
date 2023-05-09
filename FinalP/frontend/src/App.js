@@ -542,6 +542,7 @@ function App() {
             }
           />
           <Route path="/contactus" element={catalogProducts()} />
+          <Route path="/studentinfo" element={<StudentInfo/>}/>
         </Routes>
       </div>
 
