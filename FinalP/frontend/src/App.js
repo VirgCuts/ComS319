@@ -8,7 +8,7 @@ import { Route, Routes } from "react-router-dom";
 function App() {
   const [product, setProduct] = useState([]);
   const [oneProduct, setOneProduct] = useState([]);
-  const [viewer1, setViewer1] = useState(false);
+  const [viewer1, setViewer1] = useState(true);
   const [viewer2, setViewer2] = useState(false);
   const [viewer4, setViewer4] = useState(false);
   const [checked4, setChecked4] = useState(false);
@@ -23,7 +23,6 @@ function App() {
     name: "",
     request: "",
   });
-  console.log(2);
   function getAllProducts() {
     fetch("http://127.0.0.1:4000/api/get")
       .then((response) => response.json())
@@ -36,9 +35,16 @@ function App() {
   }
 
   const showAllItems = product.map((el) => (
-    <div key={el.id}>
-      Name: {el.name} <br />
-      Request {el.request} <br />
+    <div key={el.id} className="table100-body js-pscroll ps ps--active-y">
+      <table>
+        <tbody>
+          <tr className="row100 body">
+            <td className="cell100 column1">{el.id}</td>
+            <td className="cell100 column2">{el.name}</td>
+            <td className="cell100 column3">{el.request}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   ));
 
@@ -85,9 +91,16 @@ function App() {
   }
 
   const showOneItem = oneProduct.map((el) => (
-    <div key={el.id}>
-      Name: {el.name} <br />
-      Request: {el.request} <br />
+    <div key={el.id} className="table100-body js-pscroll ps ps--active-y">
+      <table>
+        <tbody>
+          <tr className="row100 body">
+            <td className="cell100 column1">{el.id}</td>
+            <td className="cell100 column2">{el.name}</td>
+            <td className="cell100 column3">{el.request}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   ));
 
@@ -214,7 +227,7 @@ function App() {
               <form
                 id="contact-form"
                 name="contact-form"
-                action="mail.php"
+                action=""
                 method="POST"
               >
                 <div className="row">
@@ -223,7 +236,7 @@ function App() {
                       <input
                         type="number"
                         placeholder=""
-                        id="id"
+                        name="id"
                         value={addNewProduct.id}
                         onChange={handleChange}
                         className="form-control"
@@ -239,7 +252,7 @@ function App() {
                       <input
                         type="text"
                         placeholder=""
-                        id="name"
+                        name="name"
                         value={addNewProduct.name}
                         onChange={handleChange}
                         className="form-control"
@@ -257,12 +270,14 @@ function App() {
                       <textarea
                         type="request"
                         placeholder=""
-                        id="request"
+                        name="request"
                         value={addNewProduct.request}
                         onChange={handleChange}
                         className="form-control md-textarea"
                       />
-                      <label htmlFor="request" className="p-2">Your message</label>
+                      <label htmlFor="request" className="p-2">
+                        Your message
+                      </label>
                     </div>
                   </div>
                 </div>
@@ -272,11 +287,11 @@ function App() {
                 <button type="submit" onClick={handleOnSubmit}>
                   {" "}
                   submit{" "}
-                </button>  
+                </button>
               </div>
               <div className="status"></div>
             </div>
-            
+
             <div className="col-md-3 text-center">
               <ul className="list-unstyled mb-0">
                 <li>
@@ -297,62 +312,133 @@ function App() {
             </div>
           </div>
         </section>
-        <hr></hr>
-        
-        <div>
-          <h3>Show all available Products.</h3>
-          <button onClick={() => getAllProducts()}>Show All ...</button>
-          {viewer1 && <div>Products {showAllItems}</div>}
+        <div className="b-example-divider"></div>
+        <div className="spacer"></div>
+        <h3 className="mt-4">Show All Requests</h3>
+        <div className="mt-4 mb-4">
+          <button
+            className="btn btn-primary btn-lg "
+            onClick={() => getAllProducts()}
+          >
+            Show All
+          </button>
+          {viewer1 && (
+            <div className="table100 ver1 m-b-100 m-2">
+              <div className="table100-head">
+                <table>
+                  <thead>
+                    <tr className="row100 head">
+                      <th className="cell100 column1">ID</th>
+                      <th className="cell100 column2">Name</th>
+                      <th className="cell100 column3">Request</th>
+                    </tr>
+                  </thead>
+                </table>
+              </div>{" "}
+              {showAllItems}
+              <div
+                className="ps__rail-x"
+                style={{ left: "0px", bottom: "0px" }}
+              >
+                <div
+                  className="ps__thumb-x"
+                  tabIndex="0"
+                  style={{ left: "0px", width: "0px" }}
+                ></div>
+              </div>
+              <div
+                className="ps__rail-y"
+                style={{ top: "0px", height: "585px", right: "5px" }}
+              >
+                <div
+                  className="ps__thumb-y"
+                  tabIndex="0"
+                  style={{ top: "0px", height: "293px" }}
+                ></div>
+              </div>
+            </div>
+          )}
         </div>
-        <hr></hr>
-        <div>
-          <h3>Show one Request by Id:</h3>
-          <input
-            type="number"
-            id="message"
-            name="message"
-            placeholder="id"
-            onChange={(e) => getOneProduct(e.target.value)}
-          />
-          {viewer2 && <div>Product: {showOneItem}</div>}
+        <div className="b-example-divider"></div>
+        <div className="spacer"></div>
+        <h3 className="mt-4">Show Request by ID</h3>
+        <div className="mt-4 mb-4">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroup-sizing-default">
+                ID
+              </span>
+            </div>
+            <input
+              class="form-control"
+              aria-label="Default"
+              aria-describedby="inputGroup-sizing-default"
+              type="number"
+              id="message"
+              name="message"
+              placeholder=""
+              onChange={(e) => getOneProduct(e.target.value)}
+            />
+          </div>
+          {viewer2 && (
+            <div className="table100 ver1 m-b-100 m-2">
+              <div className="table100-head">
+                <table>
+                  <thead>
+                    <tr className="row100 head">
+                      <th className="cell100 column1">ID</th>
+                      <th className="cell100 column2">Name</th>
+                      <th className="cell100 column3">Request</th>
+                    </tr>
+                  </thead>
+                </table>
+              </div>
+              {showOneItem}
+            </div>
+          )}
         </div>
 
-        <hr></hr>
+        <div className="b-example-divider"></div>
+        <div className="spacer"></div>
+          <h3 className="mt-4">Update Request</h3>
+        <form onSubmit={updateOneMessage} className="mt-4 mb-4">
+          <div class="form-group p-2">
+            <label for="formGroupExampleInput">ID</label>
 
-        <form onSubmit={updateOneMessage}>
-          <h3> Update your Message </h3>
-          {viewer2 && <div>Message: {showOneItem}</div>}
-          <input
-            type="number"
-            id="updateIDinput"
-            name="id"
-            placeholder="id"
-            value={updateRequest.id}
-            onChange={handleChangeUpdate}
-            className="form-control"
-          />
-          <label htmlFor="updateIDinput" className="p-2">
-                        ID
-                      </label>
+            <input
+              type="number"
+              class="form-control"
+              id="formGroupExampleInput"
+              name="id"
+              placeholder=""
+              value={updateRequest.id}
+              onChange={handleChangeUpdate}
+              className="form-control"
+            />
+          </div>
+          <div class="form-group p-2">
+            <label for="formGroupExampleInput2">New Request</label>
 
-          <textarea
-            type="request"
-            className="form-control md-textarea"
-            name="request"
-            id="request"
-            placeholder="Update Request"
-            value={updateRequest.request}
-            onChange={handleChangeUpdate}
-          />
-          <label htmlFor="request" className="d-block p-2">
-                        Change your request
-                      </label>
-          <button type="submit">submit</button>
+            <textarea
+              type="request"
+              className="form-control md-textarea"
+              name="request"
+              id="formGroupExampleInput2"
+              placeholder="Update Request"
+              value={updateRequest.request}
+              onChange={handleChangeUpdate}
+            />
+          </div>
+          <button type="submit" class="btn btn-primary m-2">
+            Submit
+          </button>
         </form>
 
-        <hr></hr>
-        <div className="">
+        <div className="b-example-divider"></div>
+        <div className="spacer"></div>
+        <div className="mt-4 mb-4">
           <h3>Delete A Request:</h3>
+
           <input
             type="checkbox"
             id="acceptdelete"
@@ -361,16 +447,50 @@ function App() {
             checked={checked4}
             onChange={(e) => setChecked4(!checked4)}
           />
-          <button onClick={() => getOneByOneProductPrev()} id ="triangle" className="p-2 m-2">Prev</button>
-          <button onClick={() => getOneByOneProductNext()} id ="triangle" className="p-2 m-2">Next</button>
-          <button onClick={() => deleteOneProduct(product[index].id)} className="p-2 m-2">
+          <button
+            onClick={() => getOneByOneProductPrev()}
+            class="btn btn-primary m-2 p-2"
+          >
+            Prev
+          </button>
+          <button
+            onClick={() => getOneByOneProductNext()}
+            class="btn btn-primary m-2 p-2"
+          >
+            Next
+          </button>
+          <button
+            onClick={() => deleteOneProduct(product[index].id)}
+            class="btn btn-primary m-2 p-2"
+          >
             Delete
           </button>
           {checked4 && (
-            <div key={product[index].id}>
-              Id:{product[index].id} <br />
-              Name: {product[index].name} <br />
-              Request: {product[index].request} <br />
+            <div className="table100 ver1 m-b-100 m-2">
+              <div className="table100-head">
+                <table>
+                  <thead>
+                    <tr className="row100 head">
+                      <th className="cell100 column1">ID</th>
+                      <th className="cell100 column2">Name</th>
+                      <th className="cell100 column3">Request</th>
+                    </tr>
+                  </thead>
+                </table>
+              </div>
+              <div className="table100-body js-pscroll ps ps--active-y">
+                <table>
+                  <tbody>
+                    <tr className="row100 body">
+                      <td className="cell100 column1">{product[index].id}</td>
+                      <td className="cell100 column2">{product[index].name}</td>
+                      <td className="cell100 column3">
+                        {product[index].request}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </div>
           )}
         </div>
