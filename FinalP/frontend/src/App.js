@@ -363,14 +363,14 @@ function App() {
         <div className="spacer"></div>
         <h3 className="mt-4">Show Request by ID</h3>
         <div className="mt-4 mb-4">
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="inputGroup-sizing-default">
+          <div className="input-group mb-3">
+            <div className="input-group-prepend">
+              <span className="input-group-text" id="inputGroup-sizing-default">
                 ID
               </span>
             </div>
             <input
-              class="form-control"
+              className="form-control"
               aria-label="Default"
               aria-describedby="inputGroup-sizing-default"
               type="number"
@@ -402,21 +402,21 @@ function App() {
         <div className="spacer"></div>
           <h3 className="mt-4">Update Request</h3>
         <form onSubmit={updateOneMessage} className="mt-4 mb-4">
-          <div class="form-group p-2">
+          <div className="form-group p-2">
             <label for="formGroupExampleInput">ID</label>
 
             <input
               type="number"
-              class="form-control"
+              className="form-control"
               id="formGroupExampleInput"
               name="id"
               placeholder=""
               value={updateRequest.id}
               onChange={handleChangeUpdate}
-              className="form-control"
+              
             />
           </div>
-          <div class="form-group p-2">
+          <div className="form-group p-2">
             <label for="formGroupExampleInput2">New Request</label>
 
             <textarea
@@ -429,7 +429,7 @@ function App() {
               onChange={handleChangeUpdate}
             />
           </div>
-          <button type="submit" class="btn btn-primary m-2">
+          <button type="submit" className="btn btn-primary m-2">
             Submit
           </button>
         </form>
@@ -449,19 +449,19 @@ function App() {
           />
           <button
             onClick={() => getOneByOneProductPrev()}
-            class="btn btn-primary m-2 p-2"
+            className="btn btn-primary m-2 p-2"
           >
             Prev
           </button>
           <button
             onClick={() => getOneByOneProductNext()}
-            class="btn btn-primary m-2 p-2"
+            className="btn btn-primary m-2 p-2"
           >
             Next
           </button>
           <button
             onClick={() => deleteOneProduct(product[index].id)}
-            class="btn btn-primary m-2 p-2"
+            className="btn btn-primary m-2 p-2"
           >
             Delete
           </button>
